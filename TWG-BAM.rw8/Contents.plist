@@ -133,6 +133,7 @@
 			<array/>
 			<key>Subsandwiches</key>
 			<array>
+				<string>DefaultPageAttributes</string>
 				<string>Pages</string>
 				<string>Resources</string>
 				<string>SharedPluginData</string>

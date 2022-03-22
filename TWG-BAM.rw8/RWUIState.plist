@@ -13,7 +13,9 @@
 	<key>selectedInspectorTab</key>
 	<string>info</string>
 	<key>selectedItems</key>
-	<array/>
+	<array>
+		<string>page0</string>
+	</array>
 	<key>selectedMode</key>
 	<integer>0</integer>
 </dict>
