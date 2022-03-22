@@ -9,21 +9,16 @@
 		<dict>
 			<key>Dictionary</key>
 			<dict>
-				<key>HomePage</key>
-				<string>1-Home</string>
+				<key>Entries</key>
+				<array/>
 			</dict>
 			<key>Files</key>
 			<array/>
 			<key>Subsandwiches</key>
-			<array>
-				<string>1-Home</string>
-				<string>2-People</string>
-				<string>3-Design</string>
-				<string>4-Download</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>Type</key>
-	<string>Pages</string>
+	<string>RapidWeaver File Sharing Data</string>
 </dict>
 </plist>
