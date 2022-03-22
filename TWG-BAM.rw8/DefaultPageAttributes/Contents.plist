@@ -10,7 +10,12 @@
 			<key>Dictionary</key>
 			<dict>
 				<key>ColourStyles</key>
-				<dict/>
+				<dict>
+					<key>Offroad</key>
+					<dict/>
+					<key>Tesla</key>
+					<dict/>
+				</dict>
 				<key>CreditRapidWeaver</key>
 				<true/>
 				<key>DefaultLinkTarget</key>

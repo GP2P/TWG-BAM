@@ -14,9 +14,9 @@
 	<string>info</string>
 	<key>selectedItems</key>
 	<array>
-		<string>page0</string>
+		<string>General Configuration View</string>
 	</array>
 	<key>selectedMode</key>
-	<integer>0</integer>
+	<integer>1</integer>
 </dict>
 </plist>

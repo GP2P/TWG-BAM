@@ -38,9 +38,11 @@
 				<key>SiteAttributes</key>
 				<dict>
 					<key>AddCopyrightMailTo</key>
-					<true/>
+					<false/>
 					<key>AnonymiseThirdPartyRequests</key>
 					<false/>
+					<key>BaseURL</key>
+					<string>https://TWGBAM.fun/</string>
 					<key>ConsolidateCSSFiles</key>
 					<true/>
 					<key>ConsolidateCommonFilesMode</key>
@@ -48,7 +50,7 @@
 					<key>ContactText</key>
 					<string>Contact Me</string>
 					<key>CopyrightText</key>
-					<string>© 2022 G3P</string>
+					<string>© 2022 Iron Deficiency</string>
 					<key>CopyrightTextUsed</key>
 					<true/>
 					<key>CruftlessLinksEnabled</key>
@@ -86,13 +88,13 @@
 					<key>ShowPrivacyMessage</key>
 					<false/>
 					<key>SloganText</key>
-					<string>Changing the world, one site at a time…</string>
+					<string>Tale of the Wand Guy: Back-Alley Magic</string>
 					<key>SloganUsed</key>
 					<true/>
 					<key>ThemeName</key>
-					<string>Offroad</string>
+					<string>Tesla</string>
 					<key>TitleText</key>
-					<string>My Website</string>
+					<string>TWG:BAM</string>
 					<key>TitleTextUsed</key>
 					<true/>
 					<key>UniqueBackupName</key>
@@ -126,7 +128,7 @@
 					<key>useDocumentPortability</key>
 					<true/>
 					<key>useSocialTags</key>
-					<true/>
+					<false/>
 				</dict>
 			</dict>
 			<key>Files</key>
