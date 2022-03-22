@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Creator</key>
+	<string></string>
+	<key>SandwichFillings</key>
+	<array>
+		<dict>
+			<key>Dictionary</key>
+			<dict>
+				<key>ArchivePostsEnabled</key>
+				<true/>
+				<key>ArchivePostsPeriod</key>
+				<integer>1</integer>
+				<key>ArchivePostsShowGaps</key>
+				<true/>
+				<key>Categories</key>
+				<array>
+					<dict>
+						<key>ID</key>
+						<integer>2</integer>
+						<key>Name</key>
+						<string>Personal</string>
+					</dict>
+					<dict>
+						<key>ID</key>
+						<integer>3</integer>
+						<key>Name</key>
+						<string>Work</string>
+					</dict>
+					<dict>
+						<key>ID</key>
+						<integer>4</integer>
+						<key>Name</key>
+						<string>Humor</string>
+					</dict>
+					<dict>
+						<key>ID</key>
+						<integer>5</integer>
+						<key>Name</key>
+						<string>Apple</string>
+					</dict>
+				</array>
+				<key>CategoriesEnabled</key>
+				<false/>
+				<key>CategoriesSeparatorText</key>
+				<string> | </string>
+				<key>CategoriesTitleText</key>
+				<string>Filed in: </string>
+				<key>CommentSeparatorText</key>
+				<string> | </string>
+				<key>CommentsRSSFeedText</key>
+				<string>Comments Feed</string>
+				<key>CommentsSelectedProviderTag</key>
+				<integer>0</integer>
+				<key>CommentsUserIdentifiers</key>
+				<dict/>
+				<key>CustomITunesTags</key>
+				<dict/>
+				<key>DateModifier1</key>
+				<string>dd</string>
+				<key>DateModifier2</key>
+				<string>MM</string>
+				<key>DateModifier3</key>
+				<string>yy</string>
+				<key>DateModifier4</key>
+				<string>HH:mm</string>
+				<key>DateSeparatorText1</key>
+				<string>/</string>
+				<key>DateSeparatorText2</key>
+				<string>/</string>
+				<key>DateSeparatorText3</key>
+				<string> </string>
+				<key>DateSeparatorText4</key>
+				<string> </string>
+				<key>EnableCommentsInline</key>
+				<false/>
+				<key>EnableCustomiTunesTags</key>
+				<false/>
+				<key>EnablePodcasting</key>
+				<false/>
+				<key>EnableRSS</key>
+				<true/>
+				<key>EnableSmileys</key>
+				<false/>
+				<key>Entries</key>
+				<array/>
+				<key>GeneratePermalinkPages</key>
+				<true/>
+				<key>GenerateRSSEntriesForMainPageOnly</key>
+				<false/>
+				<key>LastBuildDate</key>
+				<date>2022-03-22T17:17:07Z</date>
+				<key>LastID</key>
+				<integer>1</integer>
+				<key>LastSavedBuildDate</key>
+				<date>2022-03-22T17:09:45Z</date>
+				<key>NumberOfFrontPagePosts</key>
+				<integer>5</integer>
+				<key>PermalinkText</key>
+				<string>Permalink</string>
+				<key>PrependSummaryToPost</key>
+				<false/>
+				<key>RSSCustomFeedFilename</key>
+				<string>feed.xml</string>
+				<key>RSSDescription</key>
+				<string>Hot News!</string>
+				<key>RSSFeedLinkText</key>
+				<string>RSS Feed</string>
+				<key>RSSLanguage</key>
+				<string>English</string>
+				<key>RSSTitleText</key>
+				<string>My RSS Feed</string>
+				<key>ReadMoreText</key>
+				<string> Read More…</string>
+				<key>ShowCategoryPostCounts</key>
+				<false/>
+				<key>ShowTagPostCounts</key>
+				<false/>
+				<key>SortedCategoryExport</key>
+				<true/>
+				<key>TagCloudEnabled</key>
+				<true/>
+				<key>TagsEnabled</key>
+				<false/>
+				<key>TagsSeparatorText</key>
+				<string>, </string>
+				<key>TagsTitleText</key>
+				<string>Tags: </string>
+				<key>UsePHPForSidebarContent</key>
+				<false/>
+			</dict>
+			<key>Files</key>
+			<array/>
+			<key>Subsandwiches</key>
+			<array/>
+		</dict>
+	</array>
+	<key>Type</key>
+	<string>RapidWeaver Blog Page Data</string>
+</dict>
+</plist>
