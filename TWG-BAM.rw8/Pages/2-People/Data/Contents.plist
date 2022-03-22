@@ -8,20 +8,16 @@
 	<array>
 		<dict>
 			<key>Dictionary</key>
-			<dict>
-				<key>HomePage</key>
-				<string>1-Home</string>
-			</dict>
+			<dict/>
 			<key>Files</key>
-			<array/>
-			<key>Subsandwiches</key>
 			<array>
-				<string>1-Home</string>
-				<string>2-People</string>
+				<string>Contents.txt</string>
 			</array>
+			<key>Subsandwiches</key>
+			<array/>
 		</dict>
 	</array>
 	<key>Type</key>
-	<string>Pages</string>
+	<string>RapidWeaver Markdown Data</string>
 </dict>
 </plist>

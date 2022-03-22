@@ -1,0 +1,13 @@
+# Iron Deficiency
+
+## Tech
+
+- [Yihong Xu]() – Unreal front & back, Asset Implementation, Audio, Website, Project Manager
+- [Jack Campanale](mailto:jcampanale@wpi.edu) – Unreal front and or back, Video Production, Website
+- [Ben Martin](mailto:btmartin@wpi.edu) – Unreal front and or back, Writing, Asset Implementation, Gameplay/Mechanics Design?, General Tech
+- [Ben Babalola](mailto:bababalola@wpi.edu) – Unreal front and or back, Review Git Merges
+
+## Art
+
+- [Oliver Rayner](mailto:orayner@wpi.edu) – Audio Editing, Animations, UI\UX Design, Concept Art, Lighting
+- [Kurtis Kiai](mailto:kmkiai@wpi.edu) – Character Modeling, Environmental Modeling, Texturing
