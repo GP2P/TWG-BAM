@@ -142,7 +142,7 @@
 					<key>PublishingDestinations</key>
 					<array/>
 					<key>PublishingSettingsConfigured</key>
-					<false/>
+					<true/>
 					<key>RememberPrivacyMessageDismissed</key>
 					<false/>
 					<key>SettingsPlugins</key>
