@@ -9,6 +9,8 @@
 		<dict>
 			<key>Dictionary</key>
 			<dict>
+				<key>BrowserTitle</key>
+				<string>TWG:BAM-People</string>
 				<key>CreatedDate</key>
 				<date>2022-03-22T16:53:49Z</date>
 				<key>ID</key>

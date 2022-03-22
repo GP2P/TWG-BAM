@@ -84,7 +84,7 @@
 					<key>SettingsPlugins</key>
 					<array/>
 					<key>ShowBreadcrumbTrail</key>
-					<false/>
+					<true/>
 					<key>ShowPrivacyMessage</key>
 					<false/>
 					<key>SloganText</key>
@@ -118,8 +118,17 @@
 					YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25Z
 					JGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGG
 					oF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290
-					gAChC1UkbnVsbAgRGiQpMjdJTFFTVQAAAAAA
-					AAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
+					gAGlCwwRFx5VJG51bGzSDQ4PEFpkaWN0aW9u
+					YXJ5ViRjbGFzc4ACgATTEhMOFBUWV05TLmtl
+					eXNaTlMub2JqZWN0c6CggAPSGBkaG1okY2xh
+					c3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+					RGljdGlvbmFyeaMaHB1cTlNEaWN0aW9uYXJ5
+					WE5TT2JqZWN00hgZHyBeV2ViSWNvblBhY2th
+					Z2WiIR1eV2ViSWNvblBhY2thZ2UACAARABoA
+					JAApADIANwBJAEwAUQBTAFkAXwBkAG8AdgB4
+					AHoAgQCJAJQAlQCWAJgAnQCoALEAxwDLANgA
+					4QDmAPUA+AAAAAAAAAIBAAAAAAAAACIAAAAA
+					AAAAAAAAAAAAAAEH
 					</data>
 					<key>minifyExtraFiles</key>
 					<true/>

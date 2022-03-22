@@ -9,6 +9,8 @@
 		<dict>
 			<key>Dictionary</key>
 			<dict>
+				<key>BrowserTitle</key>
+				<string>Tale of the Wand Guy: Back-Alley Magic</string>
 				<key>CreatedDate</key>
 				<date>2022-03-22T16:40:15Z</date>
 				<key>ID</key>
