@@ -14,26 +14,90 @@
 				<key>PublishingManifests</key>
 				<dict/>
 				<key>RWFileReferences</key>
-				<dict/>
+				<dict>
+					<key>684AF984-5EC1-4152-9443-60423EA87738</key>
+					<dict>
+						<key>fileName</key>
+						<string>Hades.png</string>
+						<key>identifier</key>
+						<string>684AF984-5EC1-4152-9443-60423EA87738</string>
+						<key>lastResolvablePath</key>
+						<string>/var/folders/dd/jqq7kh9x70j5dtsk2c7zl60w0000gn/T/com.realmacsoftware.rapidweaver-setapp/com.realmacsoftware.rapidweaver-setapp-96922/TbUZHZ/Hades.png</string>
+						<key>storedInsideDocument</key>
+						<true/>
+					</dict>
+					<key>BAB5A1ED-18CB-4B72-9357-4F7E227B3944</key>
+					<dict>
+						<key>fileName</key>
+						<string>VendingMachine.png</string>
+						<key>identifier</key>
+						<string>BAB5A1ED-18CB-4B72-9357-4F7E227B3944</string>
+						<key>lastResolvablePath</key>
+						<string>/var/folders/dd/jqq7kh9x70j5dtsk2c7zl60w0000gn/T/com.realmacsoftware.rapidweaver-setapp/com.realmacsoftware.rapidweaver-setapp-96922/pbAsz0/VendingMachine.png</string>
+						<key>storedInsideDocument</key>
+						<true/>
+					</dict>
+					<key>F265BE6F-2296-4E8C-BFB9-0D639A42A238</key>
+					<dict>
+						<key>fileName</key>
+						<string>SubwaySurfers.png</string>
+						<key>identifier</key>
+						<string>F265BE6F-2296-4E8C-BFB9-0D639A42A238</string>
+						<key>lastResolvablePath</key>
+						<string>/var/folders/dd/jqq7kh9x70j5dtsk2c7zl60w0000gn/T/com.realmacsoftware.rapidweaver-setapp/com.realmacsoftware.rapidweaver-setapp-96922/RWtfPd/SubwaySurfers.png</string>
+						<key>storedInsideDocument</key>
+						<true/>
+					</dict>
+				</dict>
 				<key>Site Resources</key>
 				<data>
 				YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hp
 				dmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRB
-				cmNoaXZlctEICVRyb290gAGrCwwVFiAhIiUsLzNVJG51
-				bGzTDQ4PEBIUV05TLmtleXNaTlMub2JqZWN0c1YkY2xh
-				c3OhEYACoROAA4AKVG5vZGXVFxgZGg8bHB0eH1ROYW1l
-				VWl0ZW1zWmlkZW50aWZpZXJYY2hpbGRyZW6ABYAIgASA
-				BoAJXxAkMkNEOTJERTUtNzlFMS00RTRGLUJFNzUtQjZD
-				ODlBMDRENEU3XxAPVW50aXRsZWQgRm9sZGVy0g4PIySg
-				gAfSJicoKVokY2xhc3NuYW1lWCRjbGFzc2VzXk5TTXV0
-				YWJsZUFycmF5oygqK1dOU0FycmF5WE5TT2JqZWN00g4P
-				LSSggAfSJicwMVxSV1NpdGVGb2xkZXKiMitcUldTaXRl
-				Rm9sZGVy0iYnNDVcTlNEaWN0aW9uYXJ5ojQrAAgAEQAa
-				ACQAKQAyADcASQBMAFEAUwBfAGUAbAB0AH8AhgCIAIoA
-				jACOAJAAlQCgAKUAqwC2AL8AwQDDAMUAxwDJAPABAgEH
-				AQgBCgEPARoBIwEyATYBPgFHAUwBTQFPAVQBYQFkAXEB
-				dgGDAAAAAAAAAgEAAAAAAAAANgAAAAAAAAAAAAAAAAAA
-				AYY=
+				cmNoaXZlctEICVRyb290gAGvECMLDBUWICEiJSwyRUZH
+				SExPU1dYXGdoaWptcXJ9fn+Ag4eIjFUkbnVsbNMNDg8Q
+				EhRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6ERgAKh
+				E4ADgCJUbm9kZdUXGBkaDxscHR4fVE5hbWVVaXRlbXNa
+				aWRlbnRpZmllclhjaGlsZHJlboAFgAiABIAGgCFfECQy
+				Q0Q5MkRFNS03OUUxLTRFNEYtQkU3NS1CNkM4OUEwNEQ0
+				RTdfEA9VbnRpdGxlZCBGb2xkZXLSDg8jJKCAB9ImJygp
+				WiRjbGFzc25hbWVYJGNsYXNzZXNeTlNNdXRhYmxlQXJy
+				YXmjKCorV05TQXJyYXlYTlNPYmplY3TSDg8tJKMuLzCA
+				CYATgBqAB9ozNA81NjcXODk6Ozw9Pj5AQUJDRF5SZW1v
+				dGVSZXNvdXJjZVtPcmlnaW5hbFVSTFxQdWJsaXNoZWRV
+				UkxdUHVibGlzaGVkRGF0ZV8QD0NoYW5nZWRTdGF0dXNl
+				c1pJZGVudGlmaWVyWVRpbWVTdGFtcFlGaWxlVG9rZW4I
+				gBGAEoAAgACAD4ALgAqADYAMXxAkQzhCQ0IzQkQtQTdD
+				MS00NTdFLThFMTMtRTJFOEY5MTQyOEEwWUhhZGVzLnBu
+				Z18QJDY4NEFGOTg0LTVFQzEtNDE1Mi05NDQzLTYwNDIz
+				RUE4NzczONJJD0pLV05TLnRpbWUjQcP1IDfUAjSADtIm
+				J01OVk5TRGF0ZaJNK9MNDg9QUVKgoIAQ0iYnVFVfEBNO
+				U011dGFibGVEaWN0aW9uYXJ5o1RWK1xOU0RpY3Rpb25h
+				cnlfEBwvVXNlcnMvZzNwL0Rlc2t0b3AvSGFkZXMucG5n
+				0iYnWVpeUldTaXRlUmVzb3VyY2WiWyteUldTaXRlUmVz
+				b3VyY2XaMzQPNTY3Fzg5OjtePT4+YmNkZWYIgBmAEoAA
+				gACAGIAVgBSAF4AWXxAkQkFEQUEzQkMtMTQ0OC00ODE5
+				LTlGQkItM0Y0QzNGMTQ5ODg1XxASVmVuZGluZ01hY2hp
+				bmUucG5nXxAkQkFCNUExRUQtMThDQi00QjcyLTkzNTct
+				NEY3RTIyN0IzOTQ00kkPa0sjQcP1ID4CqWmADtMNDg9u
+				b1KgoIAQXxAlL1VzZXJzL2czcC9EZXNrdG9wL1ZlbmRp
+				bmdNYWNoaW5lLnBuZ9ozNA81NjcXODk6O3Q9Pj54eXp7
+				fAiAIIASgACAAIAfgByAG4AegB1fECRFMjEwQ0U1RC1E
+				QjQ4LTREQ0EtODhCOS1EMkUxODg1NDNBQzJfEBFTdWJ3
+				YXlTdXJmZXJzLnBuZ18QJEYyNjVCRTZGLTIyOTYtNEU4
+				Qy1CRkI5LTBENjM5QTQyQTIzONJJD4FLI0HD9SBM6LBs
+				gA7TDQ4PhIVSoKCAEF8QJC9Vc2Vycy9nM3AvRGVza3Rv
+				cC9TdWJ3YXlTdXJmZXJzLnBuZ9ImJ4mKXFJXU2l0ZUZv
+				bGRlcqKLK1xSV1NpdGVGb2xkZXLSJidWjaJWKwAIABEA
+				GgAkACkAMgA3AEkATABRAFMAeQB/AIYAjgCZAKAAogCk
+				AKYAqACqAK8AugC/AMUA0ADZANsA3QDfAOEA4wEKARwB
+				IQEiASQBKQE0AT0BTAFQAVgBYQFmAWoBbAFuAXABcgGH
+				AZYBogGvAb0BzwHaAeQB7gHvAfEB8wH1AfcB+QH7Af0B
+				/wIBAigCMgJZAl4CZgJvAnECdgJ9AoAChwKIAokCiwKQ
+				AqYCqgK3AtYC2wLqAu0C/AMRAxIDFAMWAxgDGgMcAx4D
+				IAMiAyQDSwNgA4cDjAOVA5cDngOfA6ADogPKA98D4APi
+				A+QD5gPoA+oD7APuA/AD8gQZBC0EVARZBGIEZARrBGwE
+				bQRvBJYEmwSoBKsEuAS9AAAAAAAAAgEAAAAAAAAAjgAA
+				AAAAAAAAAAAAAAAABMA=
 				</data>
 				<key>SiteAttributes</key>
 				<dict>

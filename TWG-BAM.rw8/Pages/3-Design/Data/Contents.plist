@@ -85,15 +85,40 @@
 				<key>EnableSmileys</key>
 				<false/>
 				<key>Entries</key>
-				<array/>
+				<array>
+					<dict>
+						<key>CategoryIDs</key>
+						<array>
+							<integer>1</integer>
+						</array>
+						<key>CustomPermalinkFilename</key>
+						<string>Game-Treatment</string>
+						<key>GUID</key>
+						<string>56c5bff8fbcc7cd405cf392e3ad6cd3b</string>
+						<key>ID</key>
+						<integer>2</integer>
+						<key>Posted</key>
+						<date>2022-03-21T18:11:08Z</date>
+						<key>PublishStatus</key>
+						<integer>1</integer>
+						<key>Title</key>
+						<string>Game Treatment</string>
+						<key>openGraphDescription</key>
+						<string></string>
+						<key>openGraphImage</key>
+						<string></string>
+						<key>openGraphTitle</key>
+						<string></string>
+					</dict>
+				</array>
 				<key>GeneratePermalinkPages</key>
 				<true/>
 				<key>GenerateRSSEntriesForMainPageOnly</key>
 				<false/>
 				<key>LastBuildDate</key>
-				<date>2022-03-22T17:17:07Z</date>
+				<date>2022-03-22T17:45:32Z</date>
 				<key>LastID</key>
-				<integer>1</integer>
+				<integer>3</integer>
 				<key>LastSavedBuildDate</key>
 				<date>2022-03-22T17:09:45Z</date>
 				<key>NumberOfFrontPagePosts</key>
@@ -132,7 +157,10 @@
 				<false/>
 			</dict>
 			<key>Files</key>
-			<array/>
+			<array>
+				<string>1-Body.as</string>
+				<string>1-Summary.as</string>
+			</array>
 			<key>Subsandwiches</key>
 			<array/>
 		</dict>
