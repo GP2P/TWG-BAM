@@ -5,15 +5,19 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
+#include "Components/WidgetComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "HealthBar.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ATWGBAMCharacter
 
-ATWGBAMCharacter::ATWGBAMCharacter()
+ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 {
+	setMaxHealth(100);
+	setHealth(getMaxHealth());
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -45,6 +49,13 @@ ATWGBAMCharacter::ATWGBAMCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	if (RootComponent == nullptr) {
+		RootComponent = ObjectInitializer.CreateDefaultSubobject<USceneComponent>(this, TEXT("Root"));
+	}
+
+	HealthWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HealthBar"));
+	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -74,6 +85,10 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ATWGBAMCharacter::OnResetVR);
+
+	HealthWidgetComp->InitWidget();
+	UHealthBar* HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
+	HealthBar->setOwner(this);
 }
 
 
@@ -90,12 +105,12 @@ void ATWGBAMCharacter::OnResetVR()
 
 void ATWGBAMCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
-		Jump();
+	Jump();
 }
 
 void ATWGBAMCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
 {
-		StopJumping();
+	StopJumping();
 }
 
 void ATWGBAMCharacter::TurnAtRate(float Rate)
@@ -121,20 +136,27 @@ void ATWGBAMCharacter::MoveForward(float Value)
 		// get forward vector
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		AddMovementInput(Direction, Value);
+		setHealth(getHealth() - 1);
 	}
 }
 
 void ATWGBAMCharacter::MoveRight(float Value)
 {
-	if ( (Controller != nullptr) && (Value != 0.0f) )
+	if ((Controller != nullptr) && (Value != 0.0f))
 	{
 		// find out which way is right
 		const FRotator Rotation = Controller->GetControlRotation();
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
-	
+
 		// get right vector 
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
+	}
+}
+
+void ATWGBAMCharacter::Tick(float DeltaTime) {
+	if (getHealth() <= 0) {
+		Destroy();
 	}
 }
