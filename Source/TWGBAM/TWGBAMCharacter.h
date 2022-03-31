@@ -33,7 +33,7 @@ public:
 
 	float getHealth() const { return Health; }
 	void setHealth(float val) { Health = val; }
-
+	
 	float getMaxHealth() const { return MaxHealth; }
 	void setMaxHealth(float val) { MaxHealth = val; }
 
@@ -70,8 +70,8 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
-	float MaxHealth;
-	float Health;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxHealth;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Health;
 
 protected:
 	// APawn interface
