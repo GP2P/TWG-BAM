@@ -156,5 +156,7 @@ void ATWGBAMCharacter::MoveRight(float Value)
 }
 
 void ATWGBAMCharacter::Tick(float DeltaTime) {
-	
+	if ((getHealth() <= 0) || (getMaxHealth() <= 0)) {
+		Destroy();
+	}
 }
