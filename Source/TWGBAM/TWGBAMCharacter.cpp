@@ -18,6 +18,7 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 {
 	setMaxHealth(100);
 	setHealth(getMaxHealth());
+
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -136,7 +137,6 @@ void ATWGBAMCharacter::MoveForward(float Value)
 		// get forward vector
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		AddMovementInput(Direction, Value);
-		setHealth(getHealth() - 1);
 	}
 }
 
@@ -156,7 +156,5 @@ void ATWGBAMCharacter::MoveRight(float Value)
 }
 
 void ATWGBAMCharacter::Tick(float DeltaTime) {
-	if (getHealth() <= 0) {
-		Destroy();
-	}
+	
 }
