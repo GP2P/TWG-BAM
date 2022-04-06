@@ -10,6 +10,8 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "HealthBar.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "DrawDebugHelpers.h"
 
 //////////////////////////////////////////////////////////////////////////
 // ATWGBAMCharacter
@@ -18,7 +20,6 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 {
 	setMaxHealth(100);
 	setHealth(getMaxHealth());
-
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -57,6 +58,7 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 
 	HealthWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HealthBar"));
 	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -75,10 +77,10 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
-	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("TurnRate", this, &ATWGBAMCharacter::TurnAtRate);
-	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("LookUpRate", this, &ATWGBAMCharacter::LookUpAtRate);
+	//PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	//PlayerInputComponent->BindAxis("TurnRate", this, &ATWGBAMCharacter::TurnAtRate);
+	//PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
+	//PlayerInputComponent->BindAxis("LookUpRate", this, &ATWGBAMCharacter::LookUpAtRate);
 
 	// handle touch devices
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &ATWGBAMCharacter::TouchStarted);
@@ -87,9 +89,20 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	// VR headset functionality
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ATWGBAMCharacter::OnResetVR);
 
+	//Spell key bindings
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ATWGBAMCharacter::Fire);
+
 	HealthWidgetComp->InitWidget();
 	UHealthBar* HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
 	HealthBar->setOwner(this);
+
+	//set up mouse control
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	if (PC) {
+		PC->bShowMouseCursor = true;
+		PC->bEnableClickEvents = true;
+		PC->bEnableMouseOverEvents = true;
+	}
 }
 
 
@@ -114,18 +127,18 @@ void ATWGBAMCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Locat
 	StopJumping();
 }
 
+/*
 void ATWGBAMCharacter::TurnAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
 }
-
 void ATWGBAMCharacter::LookUpAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
-
+*/
 void ATWGBAMCharacter::MoveForward(float Value)
 {
 	if ((Controller != nullptr) && (Value != 0.0f))
@@ -155,8 +168,58 @@ void ATWGBAMCharacter::MoveRight(float Value)
 	}
 }
 
+void ATWGBAMCharacter::Fire() {
+	if (ProjectileClass == nullptr) {
+		UE_LOG(LogTemp, Warning, TEXT("test"));
+	}
+	if (ProjectileClass) {
+		FVector CameraLocation;
+		FRotator CameraRotation;
+		GetActorEyesViewPoint(CameraLocation, CameraRotation);
+
+		MuzzleOffset.Set(100.0f, 0.0f, 0.0f);
+
+
+		APlayerController* PC = Cast<APlayerController>(GetController());
+		FVector MouseLocation;
+		FVector MouseDirection;
+
+		PC->DeprojectMousePositionToWorld(MouseLocation, MouseDirection);
+		FVector MuzzleLocation = CameraLocation + FTransform(CameraRotation).TransformVector(MuzzleOffset);
+		//DrawDebugLine(GetWorld(), MouseLocation, MouseLocation + MouseDirection * 100.0f, FColor::Red, true);
+
+		FVector OV = MouseLocation + MouseDirection * 100.0f;
+		FVector Test;
+		Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 45.0f);
+		FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, Test);
+		UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
+		UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);
+
+		// Skew the aim to be slightly upwards.
+		FRotator MuzzleRotation = MouseRotator;
+		//MuzzleRotation.Pitch += 10.0f;
+
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.Owner = this;
+			SpawnParams.Instigator = GetInstigator();
+
+			// Spawn the projectile at the muzzle.
+			AProjectile* Projectile = World->SpawnActor<AProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
+			if (Projectile)
+			{
+				// Set the projectile's initial trajectory.
+				FVector LaunchDirection = MuzzleRotation.Vector();
+				Projectile->FireInDirection(LaunchDirection);
+			}
+		}
+	}
+}
+
 void ATWGBAMCharacter::Tick(float DeltaTime) {
-	if ((getHealth() <= 0) || (getMaxHealth() <= 0)) {
+	if (getHealth() <= 0) {
 		Destroy();
 	}
 }

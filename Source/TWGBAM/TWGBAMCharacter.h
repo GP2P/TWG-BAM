@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Projectile.h"
 #include "TWGBAMCharacter.generated.h"
 
 UCLASS(config = Game)
@@ -33,9 +34,15 @@ public:
 
 	float getHealth() const { return Health; }
 	void setHealth(float val) { Health = val; }
-	
+
 	float getMaxHealth() const { return MaxHealth; }
 	void setMaxHealth(float val) { MaxHealth = val; }
+
+	UFUNCTION()
+		void Fire();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+		FVector MuzzleOffset;
 
 protected:
 	UPROPERTY(VisibleAnywhere)
@@ -69,6 +76,10 @@ protected:
 
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
+
+	//Projectile class to spawn
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+		TSubclassOf<class AProjectile> ProjectileClass;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxHealth;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Health;
