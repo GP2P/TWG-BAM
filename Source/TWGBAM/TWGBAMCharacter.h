@@ -72,6 +72,7 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxHealth;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Health;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool DEAD;
 
 protected:
 	// APawn interface
