@@ -1,8 +1,8 @@
 version https://git-lfs.github.com/spec/v1
 <<<<<<< HEAD
-oid sha256:f9a6be960726bdbac3d9f60848f56aa7d94611aa8f2552b2e8154fd6a6a2630a
-size 281509
+oid sha256:f526626778819054e53c8419ba0747ab60d1b32f3cc156a8a0ddbf5e2751bb7a
+size 286
 =======
-oid sha256:83b463bc89ec4f8c29fc2db5236e41a501a4019698a5d8727787d7cfd4e75e4f
-size 289
->>>>>>> b139a0a32eb5dd59ca29e699f83ecbc7eb6e83f6
+oid sha256:fa71ddfa3d250e8aa3eb5ca9027605132b23b99fb407e79210b92a8477631d94
+size 256384
+>>>>>>> parent of b139a0a (Merge branch 'TWG-BAM' of https://github.com/GP2P/TWG-BAM into TWG-BAM)
