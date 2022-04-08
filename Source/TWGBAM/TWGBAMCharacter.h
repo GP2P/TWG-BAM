@@ -41,6 +41,9 @@ public:
 	UFUNCTION()
 		void Fire();
 
+	UFUNCTION()
+		AActor* GetClosestActor(FVector sourceLocation, TArray<AActor*> actors);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		FVector MuzzleOffset;
 

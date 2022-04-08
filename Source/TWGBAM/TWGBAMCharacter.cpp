@@ -11,6 +11,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "HealthBar.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -190,8 +191,13 @@ void ATWGBAMCharacter::Fire() {
 
 		FVector OV = MouseLocation + MouseDirection * 100.0f;
 		FVector Test;
-		Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 45.0f);
-		FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, Test);
+		//
+		Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z);
+		TArray<AActor*> ActorsToFind;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
+		AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
+		FVector closestRotator = ClosestToMouse->GetActorLocation();
+		FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, closestRotator);
 		UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
 		UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);
 
@@ -216,6 +222,31 @@ void ATWGBAMCharacter::Fire() {
 			}
 		}
 	}
+}
+
+AActor* ATWGBAMCharacter::GetClosestActor(FVector sourceLocation, TArray<AActor*> actors)
+{
+	if (actors.Num() <= 0)
+	{
+		return nullptr;
+	}
+
+	AActor* closestActor = nullptr;
+	float currentClosestDistance = TNumericLimits<float>::Max();
+
+	for (int i = 0; i < actors.Num(); i++)
+	{
+		if (actors[i]->ActorHasTag("Enemy")) {
+			float distance = FVector::DistSquared(sourceLocation, actors[i]->GetActorLocation());
+			if (distance < currentClosestDistance)
+			{
+				currentClosestDistance = distance;
+				closestActor = actors[i];
+			}
+		}
+	}
+
+	return closestActor;
 }
 
 void ATWGBAMCharacter::Tick(float DeltaTime) {
