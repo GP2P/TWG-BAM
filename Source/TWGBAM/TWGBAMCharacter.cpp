@@ -191,34 +191,37 @@ void ATWGBAMCharacter::Fire() {
 
 		FVector OV = MouseLocation + MouseDirection * 100.0f;
 		FVector Test;
-		//
 		Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z);
+		
 		TArray<AActor*> ActorsToFind;
 		UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
 		AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
-		FVector closestRotator = ClosestToMouse->GetActorLocation();
-		FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, closestRotator);
-		UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
-		UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);
+		
+		if (ClosestToMouse != nullptr) {
+			FVector closestRotator = ClosestToMouse->GetActorLocation();
+			FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, closestRotator);
+			//UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
+			//UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);
 
-		// Skew the aim to be slightly upwards.
-		FRotator MuzzleRotation = MouseRotator;
-		//MuzzleRotation.Pitch += 10.0f;
+			// Skew the aim to be slightly upwards.
+			FRotator MuzzleRotation = MouseRotator;
+			//MuzzleRotation.Pitch += 10.0f;
 
-		UWorld* World = GetWorld();
-		if (World)
-		{
-			FActorSpawnParameters SpawnParams;
-			SpawnParams.Owner = this;
-			SpawnParams.Instigator = GetInstigator();
-
-			// Spawn the projectile at the muzzle.
-			AProjectile* Projectile = World->SpawnActor<AProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
-			if (Projectile)
+			UWorld* World = GetWorld();
+			if (World)
 			{
-				// Set the projectile's initial trajectory.
-				FVector LaunchDirection = MuzzleRotation.Vector();
-				Projectile->FireInDirection(LaunchDirection);
+				FActorSpawnParameters SpawnParams;
+				SpawnParams.Owner = this;
+				SpawnParams.Instigator = GetInstigator();
+
+				// Spawn the projectile at the muzzle.
+				AProjectile* Projectile = World->SpawnActor<AProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
+				if (Projectile)
+				{
+					// Set the projectile's initial trajectory.
+					FVector LaunchDirection = MuzzleRotation.Vector();
+					Projectile->FireInDirection(LaunchDirection);
+				}
 			}
 		}
 	}

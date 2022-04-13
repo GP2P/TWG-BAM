@@ -2,6 +2,7 @@
 
 
 #include "Projectile.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -14,11 +15,10 @@ AProjectile::AProjectile()
 	}
 
 	if (!CollisionComponent) {
-		// Use a sphere as a simple collision representation.
 		CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
-		// Set the sphere's collision radius.
+		CollisionComponent->BodyInstance.SetCollisionProfileName(TEXT("Projectile"));
+		CollisionComponent->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 		CollisionComponent->InitSphereRadius(15.0f);
-		// Set the root component to be the collision component.
 		RootComponent = CollisionComponent;
 	}
 
@@ -53,8 +53,13 @@ AProjectile::AProjectile()
 
 	CollisionComponent->BodyInstance.SetCollisionProfileName(TEXT("Projectile"));
 	CollisionComponent->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
-
+	
+	static ConstructorHelpers::FObjectFinder<UParticleSystem> MyParticleSystem(TEXT("'/Game/Spells/P_ky_lightning3.P_ky_lightning3'"));
+	if (MyParticleSystem.Succeeded()){
+		ParticleExplosion = MyParticleSystem.Object;
+	}
 }
+
 
 // Called when the game starts or when spawned
 void AProjectile::BeginPlay()
@@ -82,5 +87,10 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 	else if (OtherActor->ActorHasTag("Enemy")) {
 		OtherActor->Destroy();
 	}
+	FVector SpellLocation = this->GetActorLocation();
+	if (ParticleExplosion) {
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ParticleExplosion, SpellLocation);
+	}
 	Destroy();
+
 }
