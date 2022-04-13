@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Particles/ParticleSystem.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -36,6 +37,9 @@ public:
 
 	UPROPERTY(VisibleDefaultsOnly, Category = Movement)
 		UMaterialInstanceDynamic* ProjectileMaterialInstance;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "VFX")
+		UParticleSystem* ParticleExplosion;
 
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
