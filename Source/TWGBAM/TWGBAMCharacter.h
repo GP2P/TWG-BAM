@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Projectile.h"
+#include "HotBar.h"
+#include "HotBarSpell.h"
 #include "TWGBAMCharacter.generated.h"
 
 UCLASS(config = Game)
@@ -50,6 +52,10 @@ public:
 protected:
 	UPROPERTY(VisibleAnywhere)
 		class UWidgetComponent* HealthWidgetComp;
+	UPROPERTY(VisibleAnywhere)
+		class UWidgetComponent* HotWidgetComp;
+	UPROPERTY(VisibleAnywhere)
+		class UWidgetComponent* HotSpellWidgetComp;
 
 protected:
 
@@ -87,6 +93,9 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxHealth;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Health;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool DEAD;
+
+	UHotBar* HotBar;
+	UHotBarSpell* Spell;
 
 protected:
 	// APawn interface

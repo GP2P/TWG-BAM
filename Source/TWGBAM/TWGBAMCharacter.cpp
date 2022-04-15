@@ -60,6 +60,11 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 	HealthWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HealthBar"));
 	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
+	HotWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HotBar"));
+	HotWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
+	HotSpellWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HotBarSpell"));
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -96,6 +101,13 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	HealthWidgetComp->InitWidget();
 	UHealthBar* HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
 	HealthBar->setOwner(this);
+
+	HotWidgetComp->InitWidget();
+	HotBar = Cast<UHotBar>(HotWidgetComp->GetUserWidgetObject());
+
+	HotSpellWidgetComp->InitWidget();
+	Spell = Cast<UHotBarSpell>(HotSpellWidgetComp->GetUserWidgetObject());
+	
 
 	//set up mouse control
 	APlayerController* PC = Cast<APlayerController>(GetController());
@@ -174,6 +186,7 @@ void ATWGBAMCharacter::Fire() {
 		UE_LOG(LogTemp, Warning, TEXT("test"));
 	}
 	if (ProjectileClass) {
+		HotBar->AddSpell(Spell);
 		FVector CameraLocation;
 		FRotator CameraRotation;
 		GetActorEyesViewPoint(CameraLocation, CameraRotation);
