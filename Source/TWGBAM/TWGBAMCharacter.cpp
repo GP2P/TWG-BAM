@@ -63,8 +63,6 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 	HotWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HotBar"));
 	HotWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
-	HotSpellWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HotBarSpell"));
-
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -104,10 +102,6 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 
 	HotWidgetComp->InitWidget();
 	HotBar = Cast<UHotBar>(HotWidgetComp->GetUserWidgetObject());
-
-	HotSpellWidgetComp->InitWidget();
-	Spell = Cast<UHotBarSpell>(HotSpellWidgetComp->GetUserWidgetObject());
-	
 
 	//set up mouse control
 	APlayerController* PC = Cast<APlayerController>(GetController());
@@ -186,7 +180,7 @@ void ATWGBAMCharacter::Fire() {
 		UE_LOG(LogTemp, Warning, TEXT("test"));
 	}
 	if (ProjectileClass) {
-		HotBar->AddSpell(Spell);
+		HotBar->AddSpell();
 		FVector CameraLocation;
 		FRotator CameraRotation;
 		GetActorEyesViewPoint(CameraLocation, CameraRotation);
@@ -204,7 +198,12 @@ void ATWGBAMCharacter::Fire() {
 
 		FVector OV = MouseLocation + MouseDirection * 100.0f;
 		FVector Test;
-		Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z);
+		if (OV.X > CameraLocation.X - 100.0f) {
+			Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
+		}
+		else {
+			Test.Set(OV.X, OV.Y, OV.Z - 1000.0f);
+		}
 		
 		TArray<AActor*> ActorsToFind;
 		UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
@@ -212,6 +211,8 @@ void ATWGBAMCharacter::Fire() {
 		
 		if (ClosestToMouse != nullptr) {
 			FVector closestRotator = ClosestToMouse->GetActorLocation();
+			UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), Test.X, Test.Y, Test.Z);
+			UE_LOG(LogTemp, Warning, TEXT("X: %f, Y: %f, Z: %f"), closestRotator.X, closestRotator.Y, closestRotator.Z);
 			FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, closestRotator);
 			//UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
 			//UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);

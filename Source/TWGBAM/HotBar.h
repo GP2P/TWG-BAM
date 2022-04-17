@@ -13,11 +13,17 @@ class TWGBAM_API UHotBar : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void AddSpell(UHotBarSpell* Spell);
+	void AddSpell();
 
 protected:
 	UPROPERTY(meta = (BindWidget))
-		class UUniformGridPanel* HotBar;
+		class UGridPanel* HotBar;
+	UPROPERTY(meta = (BindWidget))
+		class UHotBarSpell* Thunder;
+	UPROPERTY(meta = (BindWidget))
+		class UHotBarSpell* Fire;
+	UPROPERTY(meta = (BindWidget))
+		class UHotBarSpell* Ice;
 
 	int32 col = 0;
 

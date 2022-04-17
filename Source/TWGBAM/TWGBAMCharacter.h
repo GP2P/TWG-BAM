@@ -54,8 +54,6 @@ protected:
 		class UWidgetComponent* HealthWidgetComp;
 	UPROPERTY(VisibleAnywhere)
 		class UWidgetComponent* HotWidgetComp;
-	UPROPERTY(VisibleAnywhere)
-		class UWidgetComponent* HotSpellWidgetComp;
 
 protected:
 
