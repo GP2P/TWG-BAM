@@ -95,6 +95,9 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 
 	//Spell key bindings
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ATWGBAMCharacter::Fire);
+	PlayerInputComponent->BindAction("ThunderOn", IE_Pressed, this, &ATWGBAMCharacter::SwitchThunder);
+	PlayerInputComponent->BindAction("FireOn", IE_Pressed, this, &ATWGBAMCharacter::SwitchFire);
+	PlayerInputComponent->BindAction("WaterOn", IE_Pressed, this, &ATWGBAMCharacter::SwitchWater);
 
 	HealthWidgetComp->InitWidget();
 	UHealthBar* HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
@@ -175,70 +178,147 @@ void ATWGBAMCharacter::MoveRight(float Value)
 	}
 }
 
+void ATWGBAMCharacter::SwitchThunder() {
+	ThunderOn = true;
+	FireOn = false;
+	WaterOn = false;
+}
+
+void ATWGBAMCharacter::SwitchFire() {
+	ThunderOn = false;
+	FireOn = true;
+	WaterOn = false;
+}
+
+void ATWGBAMCharacter::SwitchWater() {
+	ThunderOn = false;
+	FireOn = false;
+	WaterOn = true;
+}
 void ATWGBAMCharacter::Fire() {
-	if (ProjectileClass == nullptr) {
-		UE_LOG(LogTemp, Warning, TEXT("test"));
-	}
-	if (ProjectileClass) {
-		HotBar->AddSpell();
-		FVector CameraLocation;
-		FRotator CameraRotation;
-		GetActorEyesViewPoint(CameraLocation, CameraRotation);
+	if (ThunderOn) {
+		if (ProjectileClass) {
+			FVector CameraLocation;
+			FRotator CameraRotation;
+			GetActorEyesViewPoint(CameraLocation, CameraRotation);
 
-		MuzzleOffset.Set(100.0f, 0.0f, 0.0f);
+			MuzzleOffset.Set(100.0f, 0.0f, 0.0f);
 
 
-		APlayerController* PC = Cast<APlayerController>(GetController());
-		FVector MouseLocation;
-		FVector MouseDirection;
+			APlayerController* PC = Cast<APlayerController>(GetController());
+			FVector MouseLocation;
+			FVector MouseDirection;
 
-		PC->DeprojectMousePositionToWorld(MouseLocation, MouseDirection);
-		FVector MuzzleLocation = CameraLocation + FTransform(CameraRotation).TransformVector(MuzzleOffset);
-		//DrawDebugLine(GetWorld(), MouseLocation, MouseLocation + MouseDirection * 100.0f, FColor::Red, true);
+			PC->DeprojectMousePositionToWorld(MouseLocation, MouseDirection);
+			FVector MuzzleLocation = CameraLocation + FTransform(CameraRotation).TransformVector(MuzzleOffset);
+			//DrawDebugLine(GetWorld(), MouseLocation, MouseLocation + MouseDirection * 100.0f, FColor::Red, true);
 
-		FVector OV = MouseLocation + MouseDirection * 100.0f;
-		FVector Test;
-		if (OV.X > CameraLocation.X - 100.0f) {
-			Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
-		}
-		else {
-			Test.Set(OV.X, OV.Y, OV.Z - 1000.0f);
-		}
-		
-		TArray<AActor*> ActorsToFind;
-		UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
-		AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
-		
-		if (ClosestToMouse != nullptr) {
-			FVector closestRotator = ClosestToMouse->GetActorLocation();
-			UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), Test.X, Test.Y, Test.Z);
-			UE_LOG(LogTemp, Warning, TEXT("X: %f, Y: %f, Z: %f"), closestRotator.X, closestRotator.Y, closestRotator.Z);
-			FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, closestRotator);
-			//UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
-			//UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);
+			FVector OV = MouseLocation + MouseDirection * 100.0f;
+			FVector Test;
+			if (OV.X > CameraLocation.X - 100.0f) {
+				Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
+			}
+			else {
+				Test.Set(OV.X, OV.Y, OV.Z - 1000.0f);
+			}
 
-			// Skew the aim to be slightly upwards.
-			FRotator MuzzleRotation = MouseRotator;
-			//MuzzleRotation.Pitch += 10.0f;
+			TArray<AActor*> ActorsToFind;
+			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
+			AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
 
-			UWorld* World = GetWorld();
-			if (World)
-			{
-				FActorSpawnParameters SpawnParams;
-				SpawnParams.Owner = this;
-				SpawnParams.Instigator = GetInstigator();
+			if (ClosestToMouse != nullptr) {
+				FVector closestRotator = ClosestToMouse->GetActorLocation();
+				UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), Test.X, Test.Y, Test.Z);
+				UE_LOG(LogTemp, Warning, TEXT("X: %f, Y: %f, Z: %f"), closestRotator.X, closestRotator.Y, closestRotator.Z);
+				FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, closestRotator);
+				//UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
+				//UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);
 
-				// Spawn the projectile at the muzzle.
-				AProjectile* Projectile = World->SpawnActor<AProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
-				if (Projectile)
+				// Skew the aim to be slightly upwards.
+				FRotator MuzzleRotation = MouseRotator;
+				//MuzzleRotation.Pitch += 10.0f;
+
+				UWorld* World = GetWorld();
+				if (World)
 				{
-					// Set the projectile's initial trajectory.
-					FVector LaunchDirection = MuzzleRotation.Vector();
-					Projectile->FireInDirection(LaunchDirection);
+					FActorSpawnParameters SpawnParams;
+					SpawnParams.Owner = this;
+					SpawnParams.Instigator = GetInstigator();
+
+					// Spawn the projectile at the muzzle.
+					AProjectile* Projectile = World->SpawnActor<AProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
+					if (Projectile)
+					{
+						// Set the projectile's initial trajectory.
+						FVector LaunchDirection = MuzzleRotation.Vector();
+						Projectile->FireInDirection(LaunchDirection);
+					}
 				}
 			}
 		}
 	}
+	else if (FireOn) {
+		//if (FireClass) {
+			FVector CameraLocation;
+			FRotator CameraRotation;
+			GetActorEyesViewPoint(CameraLocation, CameraRotation);
+
+			MuzzleOffset.Set(100.0f, 0.0f, 0.0f);
+
+
+			APlayerController* PC = Cast<APlayerController>(GetController());
+			FVector MouseLocation;
+			FVector MouseDirection;
+
+			PC->DeprojectMousePositionToWorld(MouseLocation, MouseDirection);
+			FVector MuzzleLocation = CameraLocation + FTransform(CameraRotation).TransformVector(MuzzleOffset);
+			//DrawDebugLine(GetWorld(), MouseLocation, MouseLocation + MouseDirection * 100.0f, FColor::Red, true);
+
+			FVector OV = MouseLocation + MouseDirection * 100.0f;
+			FVector Test;
+			if (OV.X > CameraLocation.X - 100.0f) {
+				Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
+			}
+			else {
+				Test.Set(OV.X, OV.Y, OV.Z - 1000.0f);
+			}
+
+			TArray<AActor*> ActorsToFind;
+			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
+			AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
+
+			if (ClosestToMouse != nullptr) {
+				FVector closestRotator = ClosestToMouse->GetActorLocation();
+				UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), Test.X, Test.Y, Test.Z);
+				UE_LOG(LogTemp, Warning, TEXT("X: %f, Y: %f, Z: %f"), closestRotator.X, closestRotator.Y, closestRotator.Z);
+				FRotator MouseRotator = UKismetMathLibrary::FindLookAtRotation(MuzzleLocation, closestRotator);
+				//UE_LOG(LogTemp, Warning, TEXT("MouseWorldX: %f, MouseWorldY: %f, MouseWorldZ: %f"), OV.X, OV.Y, OV.Z);
+				//UE_LOG(LogTemp, Warning, TEXT("CameraX: %f"), CameraLocation.X);
+
+				// Skew the aim to be slightly upwards.
+				FRotator MuzzleRotation = MouseRotator;
+				//MuzzleRotation.Pitch += 10.0f;
+
+				UWorld* World = GetWorld();
+				if (World)
+				{
+					FActorSpawnParameters SpawnParams;
+					SpawnParams.Owner = this;
+					SpawnParams.Instigator = GetInstigator();
+
+					// Spawn the projectile at the muzzle.
+					AFire* Fire = World->SpawnActor<AFire>(AFire::StaticClass(), MuzzleLocation, MuzzleRotation, SpawnParams);
+					if (Fire)
+					{
+						// Set the projectile's initial trajectory.
+						FVector LaunchDirection = MuzzleRotation.Vector();
+						Fire->FireInDirection(LaunchDirection);
+					}
+				}
+			}
+		//}
+	}
+	
 }
 
 AActor* ATWGBAMCharacter::GetClosestActor(FVector sourceLocation, TArray<AActor*> actors)
