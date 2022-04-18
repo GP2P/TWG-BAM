@@ -3,6 +3,8 @@
 
 #include "Fire.h"
 #include "Kismet/GameplayStatics.h"
+#include "CollisionShape.h"
+#include "DrawDebugHelpers.h"
 
 // Sets default values
 AFire::AFire()
@@ -26,8 +28,8 @@ AFire::AFire()
 		// Use this component to drive this projectile's movement.
 		ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
 		ProjectileMovementComponent->SetUpdatedComponent(CollisionComponent);
-		ProjectileMovementComponent->InitialSpeed = 1000.0f;
-		ProjectileMovementComponent->MaxSpeed = 1000.0f;
+		ProjectileMovementComponent->InitialSpeed = 750.0f;
+		ProjectileMovementComponent->MaxSpeed = 750.0f;
 		ProjectileMovementComponent->bRotationFollowsVelocity = true;
 		ProjectileMovementComponent->bShouldBounce = true;
 		ProjectileMovementComponent->Bounciness = 0.3f;
@@ -82,7 +84,19 @@ void AFire::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimit
 		OtherComponent->AddImpulseAtLocation(ProjectileMovementComponent->Velocity * 100.0f, Hit.ImpactPoint);
 	}
 	else if (OtherActor->ActorHasTag("Enemy")) {
-		OtherActor->Destroy();
+		FCollisionShape MySphere = FCollisionShape::MakeSphere(300.0f); // 5M Radius
+		//DrawDebugSphere(GetWorld(), GetActorLocation(), MySphere.GetSphereRadius(), 50, FColor::Purple, true);
+		TArray<FHitResult> OutResults;
+		TArray<AActor*> MarkedEnemies;
+		GetWorld()->SweepMultiByChannel(OutResults, OtherActor->GetActorLocation(), OtherActor->GetActorLocation(), FQuat::Identity, ECC_WorldStatic, MySphere);
+		for (int i = 0; i < OutResults.Num(); i++) {
+			if (OutResults[i].Actor->ActorHasTag("Enemy")) {
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Hit Result: %s"), *OutResults[i].Actor->GetName()));
+				//OutResults[i].Actor->Destroy();
+				MarkedEnemies.Add(OutResults[i].Actor.Get());
+			}
+		}
+		MarkToDestroy(MarkedEnemies);
 	}
 	FVector SpellLocation = this->GetActorLocation();
 	if (ParticleExplosion) {
@@ -90,4 +104,10 @@ void AFire::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimit
 	}
 	Destroy();
 
+}
+
+void AFire::MarkToDestroy(TArray<AActor*> Destructibles) {
+	for (int i = 0; i < Destructibles.Num(); i++) {
+		Destructibles[i]->Destroy();
+	}
 }

@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Projectile.h"
 #include "Fire.h"
+#include "Water.h"
 #include "HotBar.h"
 #include "HotBarSpell.h"
 #include "TWGBAMCharacter.generated.h"

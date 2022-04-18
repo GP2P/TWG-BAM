@@ -45,4 +45,6 @@ public:
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 
 	void FireInDirection(const FVector& ShootDirection);
+
+	void MarkToDestroy(TArray<AActor*> Destructibles);
 };

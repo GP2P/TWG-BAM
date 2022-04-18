@@ -318,6 +318,16 @@ void ATWGBAMCharacter::Fire() {
 			}
 		//}
 	}
+
+	else if (WaterOn) {
+		UWorld* World = GetWorld();
+		if (World) {
+			AWater* Water = World->SpawnActor<AWater>(AWater::StaticClass());
+			if (Water) {
+				Water->Trigger(this->GetActorLocation());
+			}
+		}	 
+	}
 	
 }
 
