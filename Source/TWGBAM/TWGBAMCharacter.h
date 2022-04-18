@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Projectile.h"
+#include "Fire.h"
 #include "HotBar.h"
 #include "HotBarSpell.h"
 #include "TWGBAMCharacter.generated.h"
@@ -88,12 +89,25 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = Projectile)
 		TSubclassOf<class AProjectile> ProjectileClass;
 
+	/*
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+		TSubclassOf<class AFire> FireClass;
+		*/
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxHealth;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Health;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool DEAD;
 
 	UHotBar* HotBar;
 	UHotBarSpell* Spell;
+
+protected:
+	bool ThunderOn = false;
+	bool FireOn = false;
+	bool WaterOn = false;
+
+	void SwitchThunder();
+	void SwitchFire();
+	void SwitchWater();
 
 protected:
 	// APawn interface

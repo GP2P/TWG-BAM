@@ -23,7 +23,7 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 		class UHotBarSpell* Fire;
 	UPROPERTY(meta = (BindWidget))
-		class UHotBarSpell* Ice;
+		class UHotBarSpell* Water;
 
 	int32 col = 0;
 
