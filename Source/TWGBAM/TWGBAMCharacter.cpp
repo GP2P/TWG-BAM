@@ -196,7 +196,8 @@ void ATWGBAMCharacter::SwitchWater() {
 	WaterOn = true;
 }
 void ATWGBAMCharacter::Fire() {
-	if (ThunderOn) {
+	if (ThunderOn && ThunderPickup > 0) {
+		ThunderPickup--;
 		if (ProjectileClass) {
 			FVector CameraLocation;
 			FRotator CameraRotation;
@@ -215,13 +216,7 @@ void ATWGBAMCharacter::Fire() {
 
 			FVector OV = MouseLocation + MouseDirection * 100.0f;
 			FVector Test;
-			if (OV.X > CameraLocation.X - 100.0f) {
-				Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
-			}
-			else {
-				Test.Set(OV.X, OV.Y, OV.Z - 1000.0f);
-			}
-
+			Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
 			TArray<AActor*> ActorsToFind;
 			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
 			AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
@@ -257,7 +252,8 @@ void ATWGBAMCharacter::Fire() {
 			}
 		}
 	}
-	else if (FireOn) {
+	else if (FireOn && FirePickup > 0) {
+		FirePickup--;
 		//if (FireClass) {
 			FVector CameraLocation;
 			FRotator CameraRotation;
@@ -276,13 +272,7 @@ void ATWGBAMCharacter::Fire() {
 
 			FVector OV = MouseLocation + MouseDirection * 100.0f;
 			FVector Test;
-			if (OV.X > CameraLocation.X - 100.0f) {
-				Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
-			}
-			else {
-				Test.Set(OV.X, OV.Y, OV.Z - 1000.0f);
-			}
-
+			Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
 			TArray<AActor*> ActorsToFind;
 			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
 			AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
@@ -319,7 +309,8 @@ void ATWGBAMCharacter::Fire() {
 		//}
 	}
 
-	else if (WaterOn) {
+	else if (WaterOn && WaterPickup > 0) {
+		WaterPickup--;
 		UWorld* World = GetWorld();
 		if (World) {
 			AWater* Water = World->SpawnActor<AWater>(AWater::StaticClass());
@@ -357,6 +348,30 @@ AActor* ATWGBAMCharacter::GetClosestActor(FVector sourceLocation, TArray<AActor*
 }
 
 void ATWGBAMCharacter::Tick(float DeltaTime) {
+	if (FirePickup > MaxFirePickup) {
+		HotBar->AddFire(FirePickup);
+		MaxFirePickup = FirePickup;
+	}
+	if (MaxFirePickup > FirePickup) {
+		HotBar->AddFire(FirePickup);
+		MaxFirePickup = FirePickup;
+	}
+	if (ThunderPickup > MaxThunderPickup) {
+		HotBar->AddThunder(ThunderPickup);
+		MaxThunderPickup = ThunderPickup;
+	}
+	if (MaxThunderPickup > ThunderPickup) {
+		HotBar->AddThunder(ThunderPickup);
+		MaxThunderPickup = ThunderPickup;
+	}
+	if (WaterPickup > MaxWaterPickup) {
+		HotBar->AddWater(WaterPickup);
+		MaxWaterPickup = WaterPickup;
+	}
+	if (MaxWaterPickup > WaterPickup) {
+		HotBar->AddWater(WaterPickup);
+		MaxWaterPickup = WaterPickup;
+	}
 	if (getHealth() <= 0) {
 		Destroy();
 	}

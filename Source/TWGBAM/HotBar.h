@@ -13,7 +13,9 @@ class TWGBAM_API UHotBar : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void AddSpell();
+	void AddFire(float NumFire);
+	void AddThunder(float NumThunder);
+	void AddWater(float NumWater);
 
 protected:
 	UPROPERTY(meta = (BindWidget))
