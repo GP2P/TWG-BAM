@@ -15,6 +15,7 @@ class TWGBAM_API UHotBarSpell : public UUserWidget
 public:
 	FText GetAmount() { return Amount->GetText(); }
 	void SetAmount(FText InText) { Amount->SetText(InText); }
+	void SetUsage(float percent);
 
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -22,4 +23,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 		class UTextBlock* Amount;
+
+	UPROPERTY(meta = (BindWidget))
+		class UProgressBar* Usage;
 };

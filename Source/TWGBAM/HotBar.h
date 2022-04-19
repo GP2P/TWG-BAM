@@ -17,6 +17,10 @@ public:
 	void AddThunder(float NumThunder);
 	void AddWater(float NumWater);
 
+	void UseFire(float Fpercent) { Fire->SetUsage(Fpercent); }
+	void UseThunder(float Tpercent) { Thunder->SetUsage(Tpercent); }
+	void UseWater(float Wpercent) { Water->SetUsage(Wpercent); }
+
 protected:
 	UPROPERTY(meta = (BindWidget))
 		class UGridPanel* HotBar;

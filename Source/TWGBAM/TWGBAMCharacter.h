@@ -102,6 +102,11 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float ThunderPickup;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float WaterPickup;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxSpellUsage;
+	float FireUsage;
+	float ThunderUsage;
+	float WaterUsage;
+
 	float MaxFirePickup = 0.0f;
 	float MaxThunderPickup = 0.0f;
 	float MaxWaterPickup = 0.0f;
