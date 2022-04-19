@@ -98,6 +98,14 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Health;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool DEAD;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float FirePickup;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float ThunderPickup;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float WaterPickup;
+
+	float MaxFirePickup = 0.0f;
+	float MaxThunderPickup = 0.0f;
+	float MaxWaterPickup = 0.0f;
+
 	UHotBar* HotBar;
 	UHotBarSpell* Spell;
 
