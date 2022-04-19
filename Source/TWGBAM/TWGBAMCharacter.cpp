@@ -21,6 +21,8 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 {
 	setMaxHealth(100);
 	setHealth(getMaxHealth());
+
+	MaxSpellUsage = 30.0f;
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -197,7 +199,11 @@ void ATWGBAMCharacter::SwitchWater() {
 }
 void ATWGBAMCharacter::Fire() {
 	if (ThunderOn && ThunderPickup > 0) {
-		ThunderPickup--;
+		ThunderUsage = ThunderUsage - 10.0f;
+		HotBar->UseThunder(ThunderUsage/MaxSpellUsage);
+		if (ThunderUsage == 0.0f) {
+			ThunderPickup--;
+		}
 		if (ProjectileClass) {
 			FVector CameraLocation;
 			FRotator CameraRotation;
@@ -253,7 +259,11 @@ void ATWGBAMCharacter::Fire() {
 		}
 	}
 	else if (FireOn && FirePickup > 0) {
-		FirePickup--;
+		FireUsage = FireUsage - 10.0f;
+		HotBar->UseFire(FireUsage/MaxSpellUsage);
+		if (FireUsage == 0.0f) {
+			FirePickup--;
+		}
 		//if (FireClass) {
 			FVector CameraLocation;
 			FRotator CameraRotation;
@@ -310,7 +320,11 @@ void ATWGBAMCharacter::Fire() {
 	}
 
 	else if (WaterOn && WaterPickup > 0) {
-		WaterPickup--;
+		WaterUsage = WaterUsage - 10.0f;
+		HotBar->UseWater(WaterUsage/MaxSpellUsage);
+		if (WaterUsage == 0.0f) {
+			WaterPickup--;
+		}
 		UWorld* World = GetWorld();
 		if (World) {
 			AWater* Water = World->SpawnActor<AWater>(AWater::StaticClass());
@@ -348,29 +362,32 @@ AActor* ATWGBAMCharacter::GetClosestActor(FVector sourceLocation, TArray<AActor*
 }
 
 void ATWGBAMCharacter::Tick(float DeltaTime) {
-	if (FirePickup > MaxFirePickup) {
+	if (FirePickup != MaxFirePickup) {
 		HotBar->AddFire(FirePickup);
+		HotBar->UseFire(MaxSpellUsage);
+		FireUsage = MaxSpellUsage;
 		MaxFirePickup = FirePickup;
 	}
-	if (MaxFirePickup > FirePickup) {
-		HotBar->AddFire(FirePickup);
-		MaxFirePickup = FirePickup;
+	if (FirePickup == 0.0f) {
+		HotBar->UseFire(0.0f);
 	}
-	if (ThunderPickup > MaxThunderPickup) {
+	if (ThunderPickup != MaxThunderPickup) {
 		HotBar->AddThunder(ThunderPickup);
+		HotBar->UseThunder(MaxSpellUsage);
+		ThunderUsage = MaxSpellUsage;
 		MaxThunderPickup = ThunderPickup;
 	}
-	if (MaxThunderPickup > ThunderPickup) {
-		HotBar->AddThunder(ThunderPickup);
-		MaxThunderPickup = ThunderPickup;
+	if (ThunderPickup == 0.0f) {
+		HotBar->UseThunder(0.0f);
 	}
-	if (WaterPickup > MaxWaterPickup) {
+	if (WaterPickup != MaxWaterPickup) {
 		HotBar->AddWater(WaterPickup);
+		HotBar->UseWater(MaxSpellUsage);
+		WaterUsage = MaxSpellUsage;
 		MaxWaterPickup = WaterPickup;
 	}
-	if (MaxWaterPickup > WaterPickup) {
-		HotBar->AddWater(WaterPickup);
-		MaxWaterPickup = WaterPickup;
+	if (WaterPickup == 0.0f) {
+		HotBar->UseWater(0.0f);
 	}
 	if (getHealth() <= 0) {
 		Destroy();
