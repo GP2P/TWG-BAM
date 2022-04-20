@@ -9,6 +9,7 @@
 #include "Water.h"
 #include "HotBar.h"
 #include "HotBarSpell.h"
+#include "Animation/AnimMontage.h"
 #include "TWGBAMCharacter.generated.h"
 
 UCLASS(config = Game)
@@ -42,7 +43,7 @@ public:
 	float getMaxHealth() const { return MaxHealth; }
 	void setMaxHealth(float val) { MaxHealth = val; }
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 		void Fire();
 
 	UFUNCTION()
@@ -50,6 +51,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		FVector MuzzleOffset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
+		bool Attacking;
 
 protected:
 	UPROPERTY(VisibleAnywhere)
@@ -115,9 +119,9 @@ protected:
 	UHotBarSpell* Spell;
 
 protected:
-	bool ThunderOn = false;
-	bool FireOn = false;
-	bool WaterOn = false;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool ThunderOn = false;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool FireOn = false;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool WaterOn = false;
 
 	void SwitchThunder();
 	void SwitchFire();

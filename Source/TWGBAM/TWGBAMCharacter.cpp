@@ -198,6 +198,7 @@ void ATWGBAMCharacter::SwitchWater() {
 	WaterOn = true;
 }
 void ATWGBAMCharacter::Fire() {
+	Attacking = true;
 	if (ThunderOn && ThunderPickup > 0) {
 		ThunderUsage = ThunderUsage - 10.0f;
 		HotBar->UseThunder(ThunderUsage/MaxSpellUsage);
@@ -333,7 +334,6 @@ void ATWGBAMCharacter::Fire() {
 			}
 		}	 
 	}
-	
 }
 
 AActor* ATWGBAMCharacter::GetClosestActor(FVector sourceLocation, TArray<AActor*> actors)
