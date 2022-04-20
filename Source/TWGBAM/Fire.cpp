@@ -20,7 +20,7 @@ AFire::AFire()
 		CollisionComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 		CollisionComponent->BodyInstance.SetCollisionProfileName(TEXT("Projectile"));
 		CollisionComponent->OnComponentHit.AddDynamic(this, &AFire::OnHit);
-		CollisionComponent->InitSphereRadius(15.0f);
+		CollisionComponent->InitSphereRadius(30.0f);
 		RootComponent = CollisionComponent;
 	}
 
@@ -84,7 +84,7 @@ void AFire::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimit
 		OtherComponent->AddImpulseAtLocation(ProjectileMovementComponent->Velocity * 100.0f, Hit.ImpactPoint);
 	}
 	else if (OtherActor->ActorHasTag("Enemy")) {
-		FCollisionShape MySphere = FCollisionShape::MakeSphere(300.0f); // 5M Radius
+		FCollisionShape MySphere = FCollisionShape::MakeSphere(400.0f); // 5M Radius
 		//DrawDebugSphere(GetWorld(), GetActorLocation(), MySphere.GetSphereRadius(), 50, FColor::Purple, true);
 		TArray<FHitResult> OutResults;
 		TArray<AActor*> MarkedEnemies;
