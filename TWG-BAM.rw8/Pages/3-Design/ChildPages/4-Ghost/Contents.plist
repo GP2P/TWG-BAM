@@ -9,24 +9,22 @@
 		<dict>
 			<key>Dictionary</key>
 			<dict>
-				<key>BrowserTitle</key>
-				<string>TWG:BAM-Design</string>
 				<key>CreatedDate</key>
-				<date>2022-03-22T17:09:45Z</date>
+				<date>2022-04-19T22:34:08Z</date>
 				<key>ID</key>
-				<string>page2</string>
+				<string>page6</string>
 				<key>MostRecentlySelectedStyleName</key>
 				<string>Theme Default</string>
 				<key>PageTitle</key>
-				<string>Design</string>
+				<string>Ghost</string>
 				<key>PluginClassName</key>
-				<string>RWBlogPlugin</string>
+				<string>RWPhotoPlugin</string>
 				<key>PluginMetadata</key>
 				<dict>
 					<key>Author</key>
 					<string>Realmac Software</string>
 					<key>Name</key>
-					<string>Blog</string>
+					<string>Photo Album</string>
 					<key>Version</key>
 					<string>7.0</string>
 				</dict>
@@ -37,7 +35,6 @@
 			<array/>
 			<key>Subsandwiches</key>
 			<array>
-				<string>ChildPages</string>
 				<string>Data</string>
 				<string>PageAttributes</string>
 			</array>

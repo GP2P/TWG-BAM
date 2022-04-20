@@ -79,7 +79,7 @@
 				<key>EnableCustomiTunesTags</key>
 				<false/>
 				<key>EnablePodcasting</key>
-				<false/>
+				<true/>
 				<key>EnableRSS</key>
 				<true/>
 				<key>EnableSmileys</key>
@@ -116,7 +116,7 @@
 				<key>GenerateRSSEntriesForMainPageOnly</key>
 				<false/>
 				<key>LastBuildDate</key>
-				<date>2022-03-22T17:45:32Z</date>
+				<date>2022-03-22T17:09:45Z</date>
 				<key>LastID</key>
 				<integer>3</integer>
 				<key>LastSavedBuildDate</key>
