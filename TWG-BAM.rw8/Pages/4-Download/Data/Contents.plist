@@ -19,7 +19,7 @@
 						<key>Type</key>
 						<integer>1</integer>
 						<key>URL</key>
-						<string>https://github.com/GP2P/TWG-BAM/releases/download/Alpha/TWG-BAM_AlphaBuild.zip</string>
+						<string>https://github.com/GP2P/TWG-BAM/releases/tag/Alpha</string>
 					</dict>
 				</array>
 			</dict>
