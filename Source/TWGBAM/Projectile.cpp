@@ -52,7 +52,7 @@ AProjectile::AProjectile()
 	InitialLifeSpan = 3.0f;
 
 	CollisionComponent->BodyInstance.SetCollisionProfileName(TEXT("Projectile"));
-	CollisionComponent->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+	CollisionComponent->OnComponentHit.AddUniqueDynamic(this, &AProjectile::OnHit);
 	
 	static ConstructorHelpers::FObjectFinder<UParticleSystem> MyParticleSystem(TEXT("'/Game/Spells/P_ky_lightning3.P_ky_lightning3'"));
 	if (MyParticleSystem.Succeeded()){
