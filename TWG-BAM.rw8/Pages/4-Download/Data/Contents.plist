@@ -10,7 +10,18 @@
 			<key>Dictionary</key>
 			<dict>
 				<key>Entries</key>
-				<array/>
+				<array>
+					<dict>
+						<key>Description</key>
+						<string>Date: April 20, 2022</string>
+						<key>Title</key>
+						<string>Alpha Release</string>
+						<key>Type</key>
+						<integer>1</integer>
+						<key>URL</key>
+						<string>https://github.com/GP2P/TWG-BAM/releases/download/Alpha/TWG-BAM_AlphaBuild.zip</string>
+					</dict>
+				</array>
 			</dict>
 			<key>Files</key>
 			<array/>

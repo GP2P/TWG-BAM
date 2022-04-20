@@ -1,1 +1,5 @@
 A third-person, reverse roguelike, played by a wizard who escaped a magical prison through a portal and landed into a futuristic alleyway. But beware! The prison warden followed you through the portal. Fight your way through the alleys of dystopian New York while evading the warden.
+
+GitHub Repository: [https://github.com/GP2P/TWG-BAM](https://github.com/GP2P/TWG-BAM)
+
+![](%resource(TWG-BAM.svg)%)
