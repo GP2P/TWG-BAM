@@ -35,7 +35,7 @@ void AWater::Tick(float DeltaTime)
 }
 
 void AWater::Trigger(FVector location) {
-	FCollisionShape MySphere = FCollisionShape::MakeSphere(150.0f); 
+	FCollisionShape MySphere = FCollisionShape::MakeSphere(200.0f); 
 	//DrawDebugSphere(GetWorld(), GetActorLocation(), MySphere.GetSphereRadius(), 50, FColor::Purple, true);
 	TArray<FHitResult> OutResults;
 	TArray<AActor*> MarkedEnemies;
