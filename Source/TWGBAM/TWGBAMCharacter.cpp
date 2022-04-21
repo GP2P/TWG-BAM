@@ -184,18 +184,21 @@ void ATWGBAMCharacter::SwitchThunder() {
 	ThunderOn = true;
 	FireOn = false;
 	WaterOn = false;
+	HotBar->OnThunder();
 }
 
 void ATWGBAMCharacter::SwitchFire() {
 	ThunderOn = false;
 	FireOn = true;
 	WaterOn = false;
+	HotBar->OnFire();
 }
 
 void ATWGBAMCharacter::SwitchWater() {
 	ThunderOn = false;
 	FireOn = false;
 	WaterOn = true;
+	HotBar->OnWater();
 }
 void ATWGBAMCharacter::Fire() {
 	Attacking = true;
