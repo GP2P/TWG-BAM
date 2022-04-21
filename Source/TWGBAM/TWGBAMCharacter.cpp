@@ -283,7 +283,8 @@ void ATWGBAMCharacter::Fire() {
 
 			FVector OV = MouseLocation + MouseDirection * 100.0f;
 			FVector Test;
-			Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
+			//(CameraLocation.X - OV.X) + CameraLocation.X
+			Test.Set(OV.X + 700.0f, OV.Y, OV.Z - 1000.0f);
 			TArray<AActor*> ActorsToFind;
 			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
 			AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
