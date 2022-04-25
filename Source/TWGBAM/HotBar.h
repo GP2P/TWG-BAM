@@ -26,14 +26,20 @@ public:
 	void OnThunder();
 	void OnWater();
 
+	void SpellsCooling(bool fc, bool tc, bool wc);
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool FireCooling;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool ThunderCooling;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool WaterCooling;
+
 protected:
 	UPROPERTY(meta = (BindWidget))
 		class UGridPanel* HotBar;
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 		class UHotBarSpell* Thunder;
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 		class UHotBarSpell* Fire;
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 		class UHotBarSpell* Water;
 	UPROPERTY(meta = (BindWidget))
 		class UBorder* ThunderBorder;

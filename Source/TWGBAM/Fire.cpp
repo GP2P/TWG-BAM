@@ -84,7 +84,7 @@ void AFire::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimit
 		OtherComponent->AddImpulseAtLocation(ProjectileMovementComponent->Velocity * 100.0f, Hit.ImpactPoint);
 	}
 	else if (OtherActor->ActorHasTag("Enemy")) {
-		FCollisionShape MySphere = FCollisionShape::MakeSphere(400.0f); // 5M Radius
+		FCollisionShape MySphere = FCollisionShape::MakeSphere(600.0f); // 5M Radius
 		//DrawDebugSphere(GetWorld(), GetActorLocation(), MySphere.GetSphereRadius(), 50, FColor::Purple, true);
 		TArray<FHitResult> OutResults;
 		TArray<AActor*> MarkedEnemies;
