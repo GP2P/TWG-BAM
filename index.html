@@ -12,7 +12,7 @@
 		<link rel="apple-touch-icon" sizes="167x167" href="https://TWGBAM.fun/resources/medium.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="https://TWGBAM.fun/resources/TWG-BAM.png" />
 <link rel="apple-touch-icon" sizes="152x152" href="https://TWGBAM.fun/resources/small.png" />
-<link rel="icon" type="image/png" href="https://TWGBAM.fun/resources/favicon_medium.png" sizes="32x32" />
+<link rel="mask-icon" href="https://TWGBAM.fun/resources/TWG-BAM.png" color="rgba(119,53,255,1.00)" /><link rel="icon" type="image/png" href="https://TWGBAM.fun/resources/favicon_medium.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="https://TWGBAM.fun/resources/favicon_small.png" sizes="16x16" />
 <link rel="icon" type="image/png" href="https://TWGBAM.fun/resources/favicon_large.png" sizes="64x64" />
 
@@ -35,7 +35,7 @@
 		<title>Tale of the Wand Guy: Back-Alley Magic</title>
 
 		<!-- CSS stylesheets reset -->
-	  <link rel="stylesheet" type="text/css" media="all" href="rw_common/themes/tesla/consolidated.css?rwcache=672175510" />
+	  <link rel="stylesheet" type="text/css" media="all" href="rw_common/themes/tesla/consolidated.css?rwcache=672598536" />
 		
 
 		<!-- CSS for the Foundation framework's CSS that handles the responsive columnized layout -->
@@ -51,23 +51,47 @@
 		
 
 		<!-- Base RapidWeaver javascript -->
-		<script type="text/javascript" src="rw_common/themes/tesla/javascript.js?rwcache=672175510"></script>
+		<script type="text/javascript" src="rw_common/themes/tesla/javascript.js?rwcache=672598536"></script>
 
 		<!-- jQuery 1.8 is included in the theme internally -->
-	  <script src="rw_common/themes/tesla/js/jquery.min.js?rwcache=672175510"></script>
+	  <script src="rw_common/themes/tesla/js/jquery.min.js?rwcache=672598536"></script>
 
 	  <!-- Theme specific javascript, along with jQuery Easing and a few other elements -->
-	  <script src="rw_common/themes/tesla/js/elixir.js?rwcache=672175510"></script>
+	  <script src="rw_common/themes/tesla/js/elixir.js?rwcache=672598536"></script>
 
 		<!-- Style variations -->
-		<script src="rw_common/themes/tesla/js/sidebar/sidebar_hidden.js?rwcache=672175510"></script>
+		<script src="rw_common/themes/tesla/js/sidebar/sidebar_hidden.js?rwcache=672598536"></script>
 		
 
 		<!-- User defined styles -->
-		
+		<style type="text/css" media="all">.embed-container { position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden; }
+
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
 
 		<!-- User defined javascript -->
-		
+		<script>
+			 <script type="application/javascript">
+
+function resizeIFrameToFitContent( iFrame ) {
+
+    iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+    iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+}
+
+window.addEventListener('DOMContentLoaded', function(e) {
+
+    var iFrame = document.getElementById( 'iFrame1' );
+    resizeIFrameToFitContent( iFrame );
+
+    // or, to resize all iframes:
+    var iframes = document.querySelectorAll("iframe");
+    for( var i = 0; i < iframes.length; i++) {
+        resizeIFrameToFitContent( iframes[i] );
+    }
+} );
+
+</script> 
+		</script>
 
 		<!-- Plugin injected code -->
 		
@@ -134,13 +158,15 @@
 		<!-- Main Content area and sidebar -->
 		<div class="row site_width" id="container">
 			<section id="content"class="large-8 columns">
-				<p>A third-person, reverse roguelike, played by a wizard who escaped a magical prison through a portal and landed into a futuristic alleyway. But beware! The prison warden followed you through the portal. Fight your way through the alleys of dystopian New York while evading the warden.</p>
+				<h3 id="abouttwg:bamtaleofthewandguy:back-alleymagic">About TWG:BAM (Tale of the Wand Guy: Back-Alley Magic)</h3>
+
+<h6 id="alphademovideo">Alpha Demo Video</h6>
+
+<div class="embed-container"><iframe src="https://www.youtube-nocookie.com/embed/wDdvdzXcAD8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe></div>
+
+<p><strong>TWG:BAM</strong> is a third-person &quot;reverse rogue-like&quot; played by a wizard who escaped a inter-dimensional prison through a portal and landed into a futuristic alleyway. But beware! A prison warden followed you through the portal. Fight your way through the alleys of dystopian New York while evading the warden.</p>
 
 <p>GitHub Repository: <a href="https://github.com/GP2P/TWG-BAM">https://github.com/GP2P/TWG-BAM</a></p>
-
-<figure>
-<img src="resources/TWG-BAM.svg" alt="" />
-<figcaption></figcaption></figure>
 			</section>
 			<aside id="sidebar" class="large-4 columns">
 				<!-- Sidebar content -->
