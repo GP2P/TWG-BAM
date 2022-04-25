@@ -1,6 +1,6 @@
 # Iron Deficiency
 
-![](%resource(Iron-Deficiency.png)%)
+![](/Resources/Iron-Deficiency.png)
 
 ### Tech
 
