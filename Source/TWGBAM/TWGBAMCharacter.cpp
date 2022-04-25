@@ -203,11 +203,11 @@ void ATWGBAMCharacter::SwitchWater() {
 void ATWGBAMCharacter::Fire() {
 	Attacking = true;
 	if (ThunderOn && ThunderPickup > 0) {
-		ThunderUsage = ThunderUsage - 10.0f;
-		HotBar->UseThunder(ThunderUsage/MaxSpellUsage);
-		if (ThunderUsage == 0.0f) {
+		//ThunderUsage = ThunderUsage - 10.0f;
+		//HotBar->UseThunder(ThunderUsage/MaxSpellUsage);
+		//if (ThunderUsage == 0.0f) {
 			ThunderPickup--;
-		}
+		//}
 		if (ProjectileClass) {
 			FVector CameraLocation;
 			FRotator CameraRotation;
@@ -263,11 +263,11 @@ void ATWGBAMCharacter::Fire() {
 		}
 	}
 	else if (FireOn && FirePickup > 0) {
-		FireUsage = FireUsage - 10.0f;
-		HotBar->UseFire(FireUsage/MaxSpellUsage);
-		if (FireUsage == 0.0f) {
+		//FireUsage = FireUsage - 10.0f;
+		//HotBar->UseFire(FireUsage/MaxSpellUsage);
+		//if (FireUsage == 0.0f) {
 			FirePickup--;
-		}
+		//}
 		//if (FireClass) {
 			FVector CameraLocation;
 			FRotator CameraRotation;
@@ -325,11 +325,11 @@ void ATWGBAMCharacter::Fire() {
 	}
 
 	else if (WaterOn && WaterPickup > 0) {
-		WaterUsage = WaterUsage - 10.0f;
-		HotBar->UseWater(WaterUsage/MaxSpellUsage);
-		if (WaterUsage == 0.0f) {
+		//WaterUsage = WaterUsage - 10.0f;
+		//HotBar->UseWater(WaterUsage/MaxSpellUsage);
+		//if (WaterUsage == 0.0f) {
 			WaterPickup--;
-		}
+		//}
 		UWorld* World = GetWorld();
 		if (World) {
 			AWater* Water = World->SpawnActor<AWater>(AWater::StaticClass());
@@ -365,11 +365,15 @@ AActor* ATWGBAMCharacter::GetClosestActor(FVector sourceLocation, TArray<AActor*
 	return closestActor;
 }
 
+void ATWGBAMCharacter::SpellOnCooldown() {
+	HotBar->SpellsCooling(FireOnCooldown, ThunderOnCooldown, WaterOnCooldown);
+}
+
 void ATWGBAMCharacter::Tick(float DeltaTime) {
 	if (FirePickup != MaxFirePickup) {
 		HotBar->AddFire(FirePickup);
-		HotBar->UseFire(MaxSpellUsage);
-		FireUsage = MaxSpellUsage;
+		//HotBar->UseFire(MaxSpellUsage);
+		//FireUsage = MaxSpellUsage;
 		MaxFirePickup = FirePickup;
 	}
 	if (FirePickup == 0.0f) {
@@ -377,8 +381,8 @@ void ATWGBAMCharacter::Tick(float DeltaTime) {
 	}
 	if (ThunderPickup != MaxThunderPickup) {
 		HotBar->AddThunder(ThunderPickup);
-		HotBar->UseThunder(MaxSpellUsage);
-		ThunderUsage = MaxSpellUsage;
+		//HotBar->UseThunder(MaxSpellUsage);
+		//ThunderUsage = MaxSpellUsage;
 		MaxThunderPickup = ThunderPickup;
 	}
 	if (ThunderPickup == 0.0f) {
@@ -386,8 +390,8 @@ void ATWGBAMCharacter::Tick(float DeltaTime) {
 	}
 	if (WaterPickup != MaxWaterPickup) {
 		HotBar->AddWater(WaterPickup);
-		HotBar->UseWater(MaxSpellUsage);
-		WaterUsage = MaxSpellUsage;
+		//HotBar->UseWater(MaxSpellUsage);
+		//WaterUsage = MaxSpellUsage;
 		MaxWaterPickup = WaterPickup;
 	}
 	if (WaterPickup == 0.0f) {

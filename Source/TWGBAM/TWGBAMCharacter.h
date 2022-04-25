@@ -46,6 +46,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void Fire();
 
+	UFUNCTION(BlueprintCallable)
+		void SpellOnCooldown();
+
 	UFUNCTION()
 		AActor* GetClosestActor(FVector sourceLocation, TArray<AActor*> actors);
 
@@ -106,10 +109,17 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float ThunderPickup;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float WaterPickup;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float BeginningSpells;
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) float MaxSpellUsage;
 	float FireUsage;
 	float ThunderUsage;
 	float WaterUsage;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float Cooldown;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool FireOnCooldown;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool ThunderOnCooldown;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool WaterOnCooldown;
 
 	float MaxFirePickup = 0.0f;
 	float MaxThunderPickup = 0.0f;

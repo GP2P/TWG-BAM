@@ -33,3 +33,9 @@ void UHotBar::OnWater() {
 	FireBorder->SetBrushColor(ABorderColor);
 	ThunderBorder->SetBrushColor(ABorderColor);
 }
+
+void UHotBar::SpellsCooling(bool fc, bool tc, bool wc) {
+	FireCooling = fc;
+	ThunderCooling = tc;
+	WaterCooling = wc;
+}
