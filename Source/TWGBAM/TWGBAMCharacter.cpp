@@ -330,11 +330,13 @@ void ATWGBAMCharacter::Fire() {
 		//if (WaterUsage == 0.0f) {
 			WaterPickup--;
 		//}
+		FVector WaterPos;
+		WaterPos.Set(this->GetActorLocation().X, this->GetActorLocation().Y, 0.0f);
 		UWorld* World = GetWorld();
 		if (World) {
 			AWater* Water = World->SpawnActor<AWater>(AWater::StaticClass());
 			if (Water) {
-				Water->Trigger(this->GetActorLocation());
+				Water->Trigger(WaterPos);
 			}
 		}	 
 	}
