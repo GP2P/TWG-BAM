@@ -12,14 +12,42 @@
 				<key>Entries</key>
 				<array>
 					<dict>
-						<key>Description</key>
-						<string>Date: April 20, 2022</string>
 						<key>Title</key>
-						<string>Alpha Release</string>
+						<string>Alpha v2 Playtest Survey</string>
 						<key>Type</key>
 						<integer>1</integer>
 						<key>URL</key>
-						<string>https://github.com/GP2P/TWG-BAM/releases/tag/Alpha</string>
+						<string>https://docs.google.com/forms/d/12zKTBFDWrafXmjwolOS3ZLYHv0_RCoGSCogqhmZcovE/</string>
+					</dict>
+					<dict>
+						<key>Description</key>
+						<string>Date: April 26, 2022</string>
+						<key>Title</key>
+						<string>Alpha v2</string>
+						<key>Type</key>
+						<integer>1</integer>
+						<key>URL</key>
+						<string>https://github.com/GP2P/TWG-BAM/releases/tag/v0.2.0-alpha</string>
+					</dict>
+					<dict>
+						<key>Description</key>
+						<string></string>
+						<key>Title</key>
+						<string>Alpha v1 Playtest Survey</string>
+						<key>Type</key>
+						<integer>1</integer>
+						<key>URL</key>
+						<string>https://docs.google.com/forms/d/e/1FAIpQLSe6IDbNymXMzPYd2YR8HunLvSbvrMICt8hhmOxY8ap3hAdCjA/viewform</string>
+					</dict>
+					<dict>
+						<key>Description</key>
+						<string>Date: April 20, 2022</string>
+						<key>Title</key>
+						<string>Alpha v1</string>
+						<key>Type</key>
+						<integer>1</integer>
+						<key>URL</key>
+						<string>https://github.com/GP2P/TWG-BAM/releases/tag/v0.1.0-alpha</string>
 					</dict>
 				</array>
 			</dict>
