@@ -16,7 +16,7 @@ class TWGBAM_API AFire : public AActor
 
 public:
 	// Sets default values for this actor's properties
-	AFire();
+	AFire(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	// Called when the game starts or when spawned
@@ -40,6 +40,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "VFX")
 		UParticleSystem* ParticleExplosion;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "VFX")
+		UParticleSystem* ParticleFire;
 
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
