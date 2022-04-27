@@ -65,6 +65,10 @@ AFire::AFire(const FObjectInitializer& ObjectInitializer)
 		ParticleFire = MyParticleFire.Object;
 	}
 	
+	static ConstructorHelpers::FObjectFinder<USoundBase> MyExplosionSound(TEXT("'/Game/Audio/SFX/Fire_Explosion.Fire_Explosion'")); 
+	if (MyExplosionSound.Succeeded()) {
+		ExplosionSound = MyExplosionSound.Object;
+	}
 }
 
 
@@ -113,6 +117,9 @@ void AFire::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimit
 	FVector SpellLocation = this->GetActorLocation();
 	if (ParticleExplosion) {
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ParticleExplosion, SpellLocation);
+	}
+	if (ExplosionSound) {
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), ExplosionSound, SpellLocation);
 	}
 	Destroy();
 
