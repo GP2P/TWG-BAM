@@ -137,6 +137,11 @@ protected:
 	void SwitchFire();
 	void SwitchWater();
 
+	void ScrollDown();
+	void ScrollUp();
+
+	int scrollLoc;
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
