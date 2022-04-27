@@ -142,6 +142,10 @@ protected:
 
 	int scrollLoc;
 
+	void RunLock();
+
+	bool runOn;
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
