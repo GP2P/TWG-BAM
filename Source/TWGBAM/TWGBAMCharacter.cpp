@@ -65,6 +65,8 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 	HotWidgetComp = ObjectInitializer.CreateDefaultSubobject<UWidgetComponent>(this, TEXT("HotBar"));
 	HotWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
+	scrollLoc = 0;
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -100,6 +102,8 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAction("ThunderOn", IE_Pressed, this, &ATWGBAMCharacter::SwitchThunder);
 	PlayerInputComponent->BindAction("FireOn", IE_Pressed, this, &ATWGBAMCharacter::SwitchFire);
 	PlayerInputComponent->BindAction("WaterOn", IE_Pressed, this, &ATWGBAMCharacter::SwitchWater);
+	PlayerInputComponent->BindAction("ScrollingDown", IE_Pressed, this, &ATWGBAMCharacter::ScrollDown);
+	PlayerInputComponent->BindAction("ScrollingUp", IE_Pressed, this, &ATWGBAMCharacter::ScrollUp);
 
 	HealthWidgetComp->InitWidget();
 	UHealthBar* HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
@@ -200,6 +204,37 @@ void ATWGBAMCharacter::SwitchWater() {
 	WaterOn = true;
 	HotBar->OnWater();
 }
+
+void ATWGBAMCharacter::ScrollDown() {
+	if (scrollLoc < 2) {
+		scrollLoc++;
+	}
+	if (scrollLoc == 0) {
+		SwitchThunder();
+	}
+	else if (scrollLoc == 1) {
+		SwitchFire();
+	}
+	if (scrollLoc == 2) {
+		SwitchWater();
+	}
+}
+
+void ATWGBAMCharacter::ScrollUp() {
+	if (scrollLoc > 0) {
+		scrollLoc--;
+	}
+	if (scrollLoc == 0) {
+		SwitchThunder();
+	}
+	else if (scrollLoc == 1) {
+		SwitchFire();
+	}
+	if (scrollLoc == 2) {
+		SwitchWater();
+	}
+}
+
 void ATWGBAMCharacter::Fire() {
 	Attacking = true;
 	if (ThunderOn && ThunderPickup > 0) {
