@@ -66,7 +66,7 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 	HotWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
 	scrollLoc = 0;
-
+	runOn = false;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -104,6 +104,7 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAction("WaterOn", IE_Pressed, this, &ATWGBAMCharacter::SwitchWater);
 	PlayerInputComponent->BindAction("ScrollingDown", IE_Pressed, this, &ATWGBAMCharacter::ScrollDown);
 	PlayerInputComponent->BindAction("ScrollingUp", IE_Pressed, this, &ATWGBAMCharacter::ScrollUp);
+	PlayerInputComponent->BindAction("AutoRun", IE_Pressed, this, &ATWGBAMCharacter::RunLock);
 
 	HealthWidgetComp->InitWidget();
 	UHealthBar* HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
@@ -155,6 +156,16 @@ void ATWGBAMCharacter::LookUpAtRate(float Rate)
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 */
+
+void ATWGBAMCharacter::RunLock() {
+	if (!runOn) {
+		runOn = true;
+	}
+	else {
+		runOn = false;
+	}
+}
+
 void ATWGBAMCharacter::MoveForward(float Value)
 {
 	if ((Controller != nullptr) && (Value != 0.0f))
@@ -433,6 +444,9 @@ void ATWGBAMCharacter::Tick(float DeltaTime) {
 	}
 	if (WaterPickup == 0.0f) {
 		HotBar->UseWater(0.0f);
+	}
+	if (runOn) {
+		MoveForward(1.0f);
 	}
 	if (getHealth() <= 0) {
 		Destroy();
