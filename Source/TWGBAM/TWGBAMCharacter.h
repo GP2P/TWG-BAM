@@ -143,6 +143,7 @@ protected:
 	int scrollLoc;
 
 	void RunLock();
+	void RunOff();
 
 	bool runOn;
 
