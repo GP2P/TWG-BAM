@@ -5,9 +5,11 @@
 #include "Kismet/GameplayStatics.h"
 #include "CollisionShape.h"
 #include "DrawDebugHelpers.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "UObject/UObjectGlobals.h"
 
 // Sets default values
-AFire::AFire()
+AFire::AFire(const FObjectInitializer& ObjectInitializer)
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -57,6 +59,12 @@ AFire::AFire()
 	if (MyParticleSystem.Succeeded()) {
 		ParticleExplosion = MyParticleSystem.Object;
 	}
+
+	static ConstructorHelpers::FObjectFinder<UParticleSystem> MyParticleFire(TEXT("'/Game/Spells/P_ky_fireBall.P_ky_fireBall'"));
+	if (MyParticleFire.Succeeded()) {
+		ParticleFire = MyParticleFire.Object;
+	}
+	
 }
 
 
@@ -76,6 +84,10 @@ void AFire::Tick(float DeltaTime)
 
 void AFire::FireInDirection(const FVector& ShootDirection) {
 	ProjectileMovementComponent->Velocity = ShootDirection * ProjectileMovementComponent->InitialSpeed;
+
+	if (ParticleFire) {
+		UGameplayStatics::SpawnEmitterAttached(ParticleFire, CollisionComponent, TEXT("test name"));
+	}
 }
 
 void AFire::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit) {
