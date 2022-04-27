@@ -105,6 +105,7 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAction("ScrollingDown", IE_Pressed, this, &ATWGBAMCharacter::ScrollDown);
 	PlayerInputComponent->BindAction("ScrollingUp", IE_Pressed, this, &ATWGBAMCharacter::ScrollUp);
 	PlayerInputComponent->BindAction("AutoRun", IE_Pressed, this, &ATWGBAMCharacter::RunLock);
+	PlayerInputComponent->BindAction("AutoOff", IE_Pressed, this, &ATWGBAMCharacter::RunOff);
 
 	HealthWidgetComp->InitWidget();
 	UHealthBar* HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
@@ -164,6 +165,10 @@ void ATWGBAMCharacter::RunLock() {
 	else {
 		runOn = false;
 	}
+}
+
+void ATWGBAMCharacter::RunOff() {
+	runOn = false;
 }
 
 void ATWGBAMCharacter::MoveForward(float Value)
