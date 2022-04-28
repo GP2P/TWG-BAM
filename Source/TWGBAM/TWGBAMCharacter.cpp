@@ -277,7 +277,7 @@ void ATWGBAMCharacter::Fire() {
 
 			FVector OV = MouseLocation + MouseDirection * 100.0f;
 			FVector Test;
-			Test.Set((CameraLocation.X - OV.X) + CameraLocation.X, OV.Y, OV.Z - 1000.0f);
+			Test.Set(OV.X + 900.0f, OV.Y, OV.Z - 1000.0f);
 			TArray<AActor*> ActorsToFind;
 			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
 			AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
@@ -338,7 +338,7 @@ void ATWGBAMCharacter::Fire() {
 			FVector OV = MouseLocation + MouseDirection * 100.0f;
 			FVector Test;
 			//(CameraLocation.X - OV.X) + CameraLocation.X
-			Test.Set(OV.X + 700.0f, OV.Y, OV.Z - 1000.0f);
+			Test.Set(OV.X + 900.0f, OV.Y, OV.Z - 1000.0f);
 			TArray<AActor*> ActorsToFind;
 			UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACharacter::StaticClass(), ActorsToFind);
 			AActor* ClosestToMouse = GetClosestActor(Test, ActorsToFind);
@@ -423,6 +423,7 @@ void ATWGBAMCharacter::SpellOnCooldown() {
 }
 
 void ATWGBAMCharacter::Tick(float DeltaTime) {
+	//UE_LOG(LogTemp, Warning, TEXT("cX: %f, cY: %f, cZ: %f"), this->GetActorLocation().X, this->GetActorLocation().Y, this->GetActorLocation().Z);
 	if (FirePickup != MaxFirePickup) {
 		HotBar->AddFire(FirePickup);
 		//HotBar->UseFire(MaxSpellUsage);
