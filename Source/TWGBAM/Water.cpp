@@ -54,6 +54,6 @@ void AWater::Trigger(FVector location) {
 
 void AWater::MarkToDestroy(TArray<AActor*> Destructibles) {
 	for (int i = 0; i < Destructibles.Num(); i++) {
-		Destructibles[i]->Destroy();
+		Destructibles[i]->Tags.RemoveAt(0);
 	}
 }

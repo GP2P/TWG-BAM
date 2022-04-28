@@ -85,7 +85,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 		OtherComponent->AddImpulseAtLocation(ProjectileMovementComponent->Velocity * 100.0f, Hit.ImpactPoint);
 	}
 	else if (OtherActor->ActorHasTag("Enemy")) {
-		OtherActor->Destroy();
+		//OtherActor->Destroy();
 	}
 	FVector SpellLocation = this->GetActorLocation();
 	if (ParticleExplosion) {
