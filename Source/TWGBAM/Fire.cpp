@@ -127,6 +127,6 @@ void AFire::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimit
 
 void AFire::MarkToDestroy(TArray<AActor*> Destructibles) {
 	for (int i = 0; i < Destructibles.Num(); i++) {
-		Destructibles[i]->Destroy();
+		Destructibles[i]->Tags.RemoveAt(0);
 	}
 }
