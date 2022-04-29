@@ -34,8 +34,9 @@ void UHotBar::OnWater() {
 	ThunderBorder->SetBrushColor(ABorderColor);
 }
 
-void UHotBar::SpellsCooling(bool fc, bool tc, bool wc) {
+void UHotBar::SpellsCooling(bool fc, bool tc, bool wc, float cooldown) {
 	FireCooling = fc;
 	ThunderCooling = tc;
 	WaterCooling = wc;
+	cdTime = cooldown;
 }
