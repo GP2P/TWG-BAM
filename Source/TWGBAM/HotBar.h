@@ -26,11 +26,12 @@ public:
 	void OnThunder();
 	void OnWater();
 
-	void SpellsCooling(bool fc, bool tc, bool wc);
+	void SpellsCooling(bool fc, bool tc, bool wc, float cooldown);
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool FireCooling;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool ThunderCooling;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere) bool WaterCooling;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) float cdTime;
 
 protected:
 	UPROPERTY(meta = (BindWidget))

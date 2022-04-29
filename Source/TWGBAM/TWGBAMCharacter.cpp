@@ -419,7 +419,7 @@ AActor* ATWGBAMCharacter::GetClosestActor(FVector sourceLocation, TArray<AActor*
 }
 
 void ATWGBAMCharacter::SpellOnCooldown() {
-	HotBar->SpellsCooling(FireOnCooldown, ThunderOnCooldown, WaterOnCooldown);
+	HotBar->SpellsCooling(FireOnCooldown, ThunderOnCooldown, WaterOnCooldown, Cooldown);
 }
 
 void ATWGBAMCharacter::Tick(float DeltaTime) {

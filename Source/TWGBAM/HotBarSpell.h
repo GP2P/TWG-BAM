@@ -24,6 +24,6 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 		class UTextBlock* Amount;
 
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 		class UProgressBar* Usage;
 };
