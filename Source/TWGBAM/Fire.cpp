@@ -65,7 +65,7 @@ AFire::AFire(const FObjectInitializer& ObjectInitializer)
 		ParticleFire = MyParticleFire.Object;
 	}
 	
-	static ConstructorHelpers::FObjectFinder<USoundBase> MyExplosionSound(TEXT("'/Game/Audio/SFX/Fire_Explosion.Fire_Explosion'")); 
+	static ConstructorHelpers::FObjectFinder<USoundBase> MyExplosionSound(TEXT("'/Game/Audio/SFX/Fire_Explosion_II.Fire_Explosion_II'")); 
 	if (MyExplosionSound.Succeeded()) {
 		ExplosionSound = MyExplosionSound.Object;
 	}
