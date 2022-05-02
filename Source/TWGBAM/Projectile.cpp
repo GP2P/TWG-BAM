@@ -58,6 +58,10 @@ AProjectile::AProjectile()
 	if (MyParticleSystem.Succeeded()){
 		ParticleExplosion = MyParticleSystem.Object;
 	}
+	static ConstructorHelpers::FObjectFinder<USoundBase> MyExplosionSound(TEXT("'/Game/Audio/SFX/Thunder_Explosion.Thunder_Explosion'"));
+	if (MyExplosionSound.Succeeded()) {
+		ExplosionSound = MyExplosionSound.Object;
+	}
 }
 
 
@@ -90,6 +94,9 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 	FVector SpellLocation = this->GetActorLocation();
 	if (ParticleExplosion) {
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ParticleExplosion, SpellLocation);
+	}
+	if (ExplosionSound) {
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), ExplosionSound, SpellLocation);
 	}
 	Destroy();
 
