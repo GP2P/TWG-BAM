@@ -41,6 +41,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "VFX")
 		UParticleSystem* ParticleExplosion;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "VFX")
+		USoundBase* ExplosionSound;
+
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 
