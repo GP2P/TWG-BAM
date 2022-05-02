@@ -14,7 +14,8 @@ class TWGBAM_API UHealthBar : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void setOwner(ATWGBAMCharacter* playerChar) { Owner = playerChar; }
+	UFUNCTION(BlueprintCallable)
+		void setOwner(ATWGBAMCharacter* playerChar) { Owner = playerChar; }
 
 protected:
 	void NativeTick(const FGeometry& myGeometry, float InDeltaTime) override;
