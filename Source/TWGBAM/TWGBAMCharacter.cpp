@@ -67,6 +67,8 @@ ATWGBAMCharacter::ATWGBAMCharacter(const FObjectInitializer& ObjectInitializer)
 
 	scrollLoc = 0;
 	runOn = false;
+
+	//
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -121,6 +123,8 @@ void ATWGBAMCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 		PC->bEnableClickEvents = true;
 		PC->bEnableMouseOverEvents = true;
 	}
+
+	SwitchThunder();
 }
 
 
