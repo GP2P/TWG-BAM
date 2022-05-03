@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/TextBlock.h"
+#include "Components/Image.h"
 #include "HotBarSpell.generated.h"
 
 UCLASS()
@@ -16,10 +17,18 @@ public:
 	FText GetAmount() { return Amount->GetText(); }
 	void SetAmount(FText InText) { Amount->SetText(InText); }
 	void SetUsage(float percent);
+	void SetActiveBorder();
+	void SetNormalBorder();
 
 protected:
 	UPROPERTY(meta = (BindWidget))
 		class UImage* SpellImage;
+
+	UPROPERTY(meta = (BindWidget))
+		class UImage* Active;
+
+	UPROPERTY(meta = (BindWidget))
+		class UImage* Normal;
 
 	UPROPERTY(meta = (BindWidget))
 		class UTextBlock* Amount;
