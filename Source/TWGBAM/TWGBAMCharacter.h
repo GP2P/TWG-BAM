@@ -125,7 +125,7 @@ protected:
 	float MaxThunderPickup = 0.0f;
 	float MaxWaterPickup = 0.0f;
 
-	UHotBar* HotBar;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere) UHotBar* HotBar;
 	UHotBarSpell* Spell;
 
 protected:

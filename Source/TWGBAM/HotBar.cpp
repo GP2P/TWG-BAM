@@ -17,21 +17,21 @@ void UHotBar::AddWater(float NumWater) {
 }
 
 void UHotBar::OnFire() {
-	FireBorder->SetBrushColor(FBorderColor);
-	ThunderBorder->SetBrushColor(ABorderColor);
-	WaterBorder->SetBrushColor(ABorderColor);
+	Fire->SetActiveBorder();
+	Thunder->SetNormalBorder();
+	Water->SetNormalBorder();
 }
 
 void UHotBar::OnThunder() {
-	ThunderBorder->SetBrushColor(TBorderColor);
-	FireBorder->SetBrushColor(ABorderColor);
-	WaterBorder->SetBrushColor(ABorderColor);
+	Fire->SetNormalBorder();
+	Thunder->SetActiveBorder();
+	Water->SetNormalBorder();
 }
 
 void UHotBar::OnWater() {
-	WaterBorder->SetBrushColor(WBorderColor);
-	FireBorder->SetBrushColor(ABorderColor);
-	ThunderBorder->SetBrushColor(ABorderColor);
+	Fire->SetNormalBorder();
+	Thunder->SetNormalBorder();
+	Water->SetActiveBorder();
 }
 
 void UHotBar::SpellsCooling(bool fc, bool tc, bool wc, float cooldown) {
