@@ -12,6 +12,16 @@
 				<key>Entries</key>
 				<array>
 					<dict>
+						<key>Description</key>
+						<string>Date: May 3, 2022</string>
+						<key>Title</key>
+						<string>Beta</string>
+						<key>Type</key>
+						<integer>1</integer>
+						<key>URL</key>
+						<string>https://github.com/GP2P/TWG-BAM/releases/tag/v0.3.1-beta</string>
+					</dict>
+					<dict>
 						<key>Title</key>
 						<string>Alpha v2 Playtest Survey</string>
 						<key>Type</key>

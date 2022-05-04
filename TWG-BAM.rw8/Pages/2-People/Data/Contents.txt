@@ -6,13 +6,15 @@
 
 - [Yihong Xu](https://github.com/GP2P)
 	– Project Manager
+	- Game Logic
 	- Unreal front & back
 	- Procedual Generation
 	- Save file
+	- UI/UX
+	- Sound
 	- VFX
 	- Ability Point System
-	- Asset Implementation
-	- Audio
+	- Animations
 	- Website
 	- Video Production
 	- Promotional Materials
@@ -23,20 +25,21 @@
 	- VFX
 - [Ben Martin](mailto:btmartin@wpi.edu)
 	- Unreal front & back
-	- Enemies
+	- Enemy Behavior
+	- Interactables
 	- Ability Point System
 - [Ben Babalola](mailto:bababalola@wpi.edu)
 	- Unreal Backend
 	- Procedual Generation
-	- Review Git Merges
+	- Tutorial
 
 ### Art
 
 - [Oliver Rayner](mailto:orayner@wpi.edu)
-	- Character Modeling
+	- Character Artist
 	- Animations
 	- Audio
-	- Concept Art
-- [Kurtis Kiai](mailto:kmkiai@wpi.edu)
-	- Environmental Modeling
+	- UX
+- [Kurtis Kiai](mailto:kmkiai@wpi.edu) - Art Direction
+	- Environmental Artist
 	- Texturing

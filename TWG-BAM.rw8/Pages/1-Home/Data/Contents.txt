@@ -1,11 +1,13 @@
 ### About TWG:BAM (Tale of the Wand Guy: Back-Alley Magic)
 
-###### Alpha Demo Video
+###### Beta Demo Video
 
 
-<div class="embed-container"><iframe src="https://www.youtube-nocookie.com/embed/wDdvdzXcAD8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe></div>
+<div class="embed-container"><iframe src="https://www.youtube-nocookie.com/embed/ru5PSzSK8vU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe></div>
 
 
 **TWG:BAM** is a third-person "reverse rogue-like" played by a wizard who escaped a inter-dimensional prison through a portal and landed into a futuristic alleyway. But beware! A prison warden followed you through the portal. Fight your way through the alleys of dystopian New York while evading the warden.
 
 GitHub Repository: [https://github.com/GP2P/TWG-BAM](https://github.com/GP2P/TWG-BAM)
+
+![In-game Start Menu](/Resources/Home.png)
