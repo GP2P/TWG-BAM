@@ -92,6 +92,54 @@
 							<integer>1</integer>
 						</array>
 						<key>CustomPermalinkFilename</key>
+						<string>Kurtis-Portfolio</string>
+						<key>GUID</key>
+						<string>f7f72cb6fa1ef0915d8b70100372ccaa</string>
+						<key>ID</key>
+						<integer>4</integer>
+						<key>Posted</key>
+						<date>2022-05-05T01:41:00Z</date>
+						<key>PublishStatus</key>
+						<integer>1</integer>
+						<key>Title</key>
+						<string>Kurtis Kiai Art Portfolio</string>
+						<key>openGraphDescription</key>
+						<string></string>
+						<key>openGraphImage</key>
+						<string></string>
+						<key>openGraphTitle</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>CategoryIDs</key>
+						<array>
+							<integer>1</integer>
+						</array>
+						<key>CustomPermalinkFilename</key>
+						<string>Oliver-Portfolio</string>
+						<key>GUID</key>
+						<string>b764cbf15f3aaf9844b1f0e242d99b2b</string>
+						<key>ID</key>
+						<integer>3</integer>
+						<key>Posted</key>
+						<date>2022-05-04T09:52:00Z</date>
+						<key>PublishStatus</key>
+						<integer>1</integer>
+						<key>Title</key>
+						<string>Oliver Rayner Art Portfolio</string>
+						<key>openGraphDescription</key>
+						<string></string>
+						<key>openGraphImage</key>
+						<string></string>
+						<key>openGraphTitle</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>CategoryIDs</key>
+						<array>
+							<integer>1</integer>
+						</array>
+						<key>CustomPermalinkFilename</key>
 						<string>Game-Treatment</string>
 						<key>GUID</key>
 						<string>56c5bff8fbcc7cd405cf392e3ad6cd3b</string>
@@ -116,9 +164,9 @@
 				<key>GenerateRSSEntriesForMainPageOnly</key>
 				<false/>
 				<key>LastBuildDate</key>
-				<date>2022-03-22T17:09:45Z</date>
+				<date>2022-05-05T00:22:50Z</date>
 				<key>LastID</key>
-				<integer>3</integer>
+				<integer>5</integer>
 				<key>LastSavedBuildDate</key>
 				<date>2022-03-22T17:09:45Z</date>
 				<key>NumberOfFrontPagePosts</key>
@@ -160,6 +208,10 @@
 			<array>
 				<string>1-Body.as</string>
 				<string>1-Summary.as</string>
+				<string>2-Body.as</string>
+				<string>2-Summary.as</string>
+				<string>3-Body.as</string>
+				<string>3-Summary.as</string>
 			</array>
 			<key>Subsandwiches</key>
 			<array/>

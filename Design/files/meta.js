@@ -56,7 +56,7 @@
 	};
  
 	// Object containing all website meta info
-	var websiteMeta = {"archive-march-2022.html":"Archives for March 2022","Game-Treatment.html":"Elevator Pitch A third-person, reverse roguelike, played by a wizard who escaped a magical prison through a portal and landed into a futuristic alleyw"};
+	var websiteMeta = {"Kurtis-Portfolio.html":"<div class=\"embed-container\"><iframe src=\"https:\/\/www.youtube-nocookie.com\/embed\/iKPxU6lFHq8\" title=\"YouTube video player\" frameborder=\"0\" allow=\"acce","archive-march-2022.html":"Archives for March 2022","archive-may-2022.html":"Archives for May 2022","Oliver-Portfolio.html":"<div class=\"embed-container\"><iframe src=\"https:\/\/www.youtube-nocookie.com\/embed\/RkITBRduZGM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"acce","Game-Treatment.html":"Elevator Pitch A third-person, reverse roguelike, played by a wizard who escaped a magical prison through a portal and landed into a futuristic alleyw"};
  
 	// pageId must match the key in websiteMeta object
 	var url = window.location.pathname;

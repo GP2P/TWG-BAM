@@ -35,7 +35,7 @@
 		<title>Archives for March 2022 | TWG:BAM-Design</title>
 
 		<!-- CSS stylesheets reset -->
-	  <link rel="stylesheet" type="text/css" media="all" href="../../rw_common/themes/tesla/consolidated.css?rwcache=673330987" />
+	  <link rel="stylesheet" type="text/css" media="all" href="../../rw_common/themes/tesla/consolidated.css?rwcache=673403056" />
 		
 
 		<!-- CSS for the Foundation framework's CSS that handles the responsive columnized layout -->
@@ -51,23 +51,47 @@
 		
 
 		<!-- Base RapidWeaver javascript -->
-		<script type="text/javascript" src="../../rw_common/themes/tesla/javascript.js?rwcache=673330987"></script>
+		<script type="text/javascript" src="../../rw_common/themes/tesla/javascript.js?rwcache=673403056"></script>
 
 		<!-- jQuery 1.8 is included in the theme internally -->
-	  <script src="../../rw_common/themes/tesla/js/jquery.min.js?rwcache=673330987"></script>
+	  <script src="../../rw_common/themes/tesla/js/jquery.min.js?rwcache=673403056"></script>
 
 	  <!-- Theme specific javascript, along with jQuery Easing and a few other elements -->
-	  <script src="../../rw_common/themes/tesla/js/elixir.js?rwcache=673330987"></script>
+	  <script src="../../rw_common/themes/tesla/js/elixir.js?rwcache=673403056"></script>
 
 		<!-- Style variations -->
-		<script src="../../rw_common/themes/tesla/js/sidebar/sidebar_hidden.js?rwcache=673330987"></script>
+		<script src="../../rw_common/themes/tesla/js/sidebar/sidebar_hidden.js?rwcache=673403056"></script>
 		
 
 		<!-- User defined styles -->
-		
+		<style type="text/css" media="all">.embed-container { position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden; }
+
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
 
 		<!-- User defined javascript -->
-		
+		<script>
+			 <script type="application/javascript">
+
+function resizeIFrameToFitContent( iFrame ) {
+
+    iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+    iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+}
+
+window.addEventListener('DOMContentLoaded', function(e) {
+
+    var iFrame = document.getElementById( 'iFrame1' );
+    resizeIFrameToFitContent( iFrame );
+
+    // or, to resize all iframes:
+    var iframes = document.querySelectorAll("iframe");
+    for( var i = 0; i < iframes.length; i++) {
+        resizeIFrameToFitContent( iframes[i] );
+    }
+} );
+
+</script> 
+		</script>
 
 		<!-- Plugin injected code -->
 		<link rel="alternate" type="application/rss+xml" title="My RSS Feed" href="https://TWGBAM.fun/Design/files/feed.xml" />
@@ -153,7 +177,7 @@
 				<h4 id="sidebar_title"></h4>
 				<div id="sidebar_content"></div>
 				<div id="archives">
-					<div id="blog-archives"><a class="blog-archive-link-enabled" href="archive-march-2022.html">March 2022</a><br /></div><div id="blog-rss-feeds"><a class="blog-rss-link" href="feed.xml" rel="alternate" type="application/rss+xml" title="My RSS Feed">RSS Feed</a><br /></div>
+					<div id="blog-archives"><a class="blog-archive-link-enabled" href="archive-may-2022.html">May 2022</a><br /><div class="blog-archive-link-disabled">April 2022</div><a class="blog-archive-link-enabled" href="archive-march-2022.html">March 2022</a><br /></div><div id="blog-rss-feeds"><a class="blog-rss-link" href="feed.xml" rel="alternate" type="application/rss+xml" title="My RSS Feed">RSS Feed</a><br /></div>
 				</div>
 			</aside>
 		</div>
